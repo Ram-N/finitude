@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/finitude/static/css/main.ae537f07.css",
+    "main.js": "/finitude/static/js/main.30a3f8f7.js",
+    "static/js/453.14bc5af3.chunk.js": "/finitude/static/js/453.14bc5af3.chunk.js",
+    "index.html": "/finitude/index.html",
+    "main.ae537f07.css.map": "/finitude/static/css/main.ae537f07.css.map",
+    "main.30a3f8f7.js.map": "/finitude/static/js/main.30a3f8f7.js.map",
+    "453.14bc5af3.chunk.js.map": "/finitude/static/js/453.14bc5af3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae537f07.css",
+    "static/js/main.30a3f8f7.js"
+  ]
+}
