@@ -1,0 +1,21 @@
+{
+  "user_id": "default-user",
+  "name": "Ram",
+  "demographics": {
+    "age": 57,
+    "birth_year": 1968,
+    "birth_month": 1,
+    "gender": "male",
+    "location": "US"
+  },
+  "life_expectancy": {
+    "years": 80,
+    "source": "user_input",
+    "last_updated": "2025-07-14T00:00:00Z"
+  },
+  "timestamps": {
+    "created_at": "2025-07-14T00:00:00Z",
+    "updated_at": "2025-07-14T00:00:00Z",
+    "last_login": "2025-07-14T00:00:00Z"
+  }
+}

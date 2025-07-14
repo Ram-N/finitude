@@ -1,4 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { 
+  loadDefaultActivities, 
+  convertActivitiesToLegacyFormat 
+} from './utils/dataLoader';
+import { 
+  loadUserProfile, 
+  saveUserProfile, 
+  loadUserSettings,
+  loadUserActivities,
+  saveUserActivities 
+} from './utils/userManager';
 
 const Finitude = () => {
   const [currentCard, setCurrentCard] = useState(0);
@@ -7,107 +18,40 @@ const Finitude = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [currentView, setCurrentView] = useState('main'); // 'main', 'settings', 'lifespan', 'activities'
-  const [lifeExpectancy, setLifeExpectancy] = useState(78.5);
-  const [currentAge, setCurrentAge] = useState(57);
-  const [firstName, setFirstName] = useState('');
+  const [userProfile, setUserProfile] = useState(null);
+  const [userSettings, setUserSettings] = useState(null);
   const [activities, setActivities] = useState([]);
   const [editingActivity, setEditingActivity] = useState(null);
   const intervalRef = useRef(null);
   const progressRef = useRef(null);
 
+  // Derived values from profile for backwards compatibility
+  const lifeExpectancy = userProfile?.life_expectancy?.years || 78.5;
+  const currentAge = userProfile?.demographics?.age || 57;
+  const firstName = userProfile?.name || '';
+  const tickInterval = userSettings?.display?.tick_interval_seconds || 5;
+
   const yearsRemaining = lifeExpectancy - currentAge;
 
-  const defaultActivities = [
-    {
-      id: 1,
-      name: "Sunsets",
-      icon: "🌅",
-      frequency: 365,
-      description: "Each sunset is a masterpiece you'll never see again"
-    },
-    {
-      id: 2,
-      name: "Weekends",
-      icon: "🌿",
-      frequency: 52,
-      description: "Precious days to rest and reconnect"
-    },
-    {
-      id: 3,
-      name: "Seasons",
-      icon: "🍂",
-      frequency: 4,
-      description: "The eternal cycle of renewal"
-    },
-    {
-      id: 4,
-      name: "Books",
-      icon: "📚",
-      frequency: 24,
-      description: "Stories and wisdom waiting to be discovered"
-    },
-    {
-      id: 5,
-      name: "Movies",
-      icon: "🎬",
-      frequency: 36,
-      description: "Adventures and emotions on the silver screen"
-    },
-    {
-      id: 6,
-      name: "Family Gatherings",
-      icon: "👨‍👩‍👧‍👦",
-      frequency: 12,
-      description: "Moments that bind us together"
-    },
-    {
-      id: 7,
-      name: "Vacations",
-      icon: "✈️",
-      frequency: 2,
-      description: "Journeys to new places and experiences"
-    },
-    {
-      id: 8,
-      name: "Birthdays",
-      icon: "🎂",
-      frequency: 1,
-      description: "Annual celebrations of your journey"
-    },
-    {
-      id: 9,
-      name: "Deep Conversations",
-      icon: "💭",
-      frequency: 48,
-      description: "Connections that touch the soul"
-    },
-    {
-      id: 10,
-      name: "Walks in Nature",
-      icon: "🌲",
-      frequency: 104,
-      description: "Steps that ground you in the present"
-    },
-    {
-      id: 11,
-      name: "Cups of Morning Coffee",
-      icon: "☕",
-      frequency: 350,
-      description: "Quiet moments before the day begins"
-    },
-    {
-      id: 12,
-      name: "New Year's Eves",
-      icon: "🎆",
-      frequency: 1,
-      description: "Fresh starts and new possibilities"
-    }
-  ];
-
-  // Initialize activities if empty
+  // Initialize data on component mount
   useEffect(() => {
-    if (activities.length === 0) {
-      setActivities(defaultActivities);
+    // Load user profile
+    const profile = loadUserProfile();
+    setUserProfile(profile);
+
+    // Load user settings
+    const settings = loadUserSettings();
+    setUserSettings(settings);
+
+    // Load activities (user customizations or defaults)
+    const userActivities = loadUserActivities();
+    if (userActivities && userActivities.length > 0) {
+      setActivities(userActivities);
+    } else {
+      // Convert new format activities to legacy format for compatibility
+      const defaultActivitiesData = loadDefaultActivities();
+      const legacyFormatActivities = convertActivitiesToLegacyFormat(defaultActivitiesData);
+      setActivities(legacyFormatActivities);
     }
   }, []);
 
@@ -116,7 +60,7 @@ const Finitude = () => {
     count: Math.floor(activity.frequency * yearsRemaining)
   }));
 
-  const startAutoPlay = () => {
+  const startAutoPlay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (progressRef.current) clearInterval(progressRef.current);
     
@@ -136,8 +80,8 @@ const Finitude = () => {
     intervalRef.current = setInterval(() => {
       setCurrentCard(prev => (prev + 1) % cardsWithCounts.length);
       setProgress(0);
-    }, 5000);
-  };
+    }, tickInterval * 1000);
+  }, [cardsWithCounts.length, tickInterval]);
 
   const stopAutoPlay = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -155,7 +99,7 @@ const Finitude = () => {
     return () => {
       stopAutoPlay();
     };
-  }, [isAutoPlaying, currentCard, cardsWithCounts.length]);
+  }, [isAutoPlaying, currentCard, cardsWithCounts.length, startAutoPlay]);
 
   const nextCard = () => {
     if (cardsWithCounts.length > 0) {
@@ -209,15 +153,46 @@ const Finitude = () => {
   };
 
   const handleLifespanChange = (value) => {
-    setLifeExpectancy(value);
+    if (userProfile) {
+      const updatedProfile = {
+        ...userProfile,
+        life_expectancy: {
+          ...userProfile.life_expectancy,
+          years: value,
+          last_updated: new Date().toISOString()
+        }
+      };
+      setUserProfile(updatedProfile);
+      saveUserProfile(updatedProfile);
+    }
   };
 
   const handleAgeChange = (value) => {
-    setCurrentAge(value);
+    if (userProfile) {
+      const currentYear = new Date().getFullYear();
+      const birthYear = currentYear - value;
+      const updatedProfile = {
+        ...userProfile,
+        demographics: {
+          ...userProfile.demographics,
+          age: value,
+          birth_year: birthYear
+        }
+      };
+      setUserProfile(updatedProfile);
+      saveUserProfile(updatedProfile);
+    }
   };
 
   const handleNameChange = (value) => {
-    setFirstName(value);
+    if (userProfile) {
+      const updatedProfile = {
+        ...userProfile,
+        name: value
+      };
+      setUserProfile(updatedProfile);
+      saveUserProfile(updatedProfile);
+    }
   };
 
   const handleActivityEdit = (activity) => {
@@ -225,16 +200,18 @@ const Finitude = () => {
   };
 
   const handleActivitySave = (updatedActivity) => {
-    setActivities(prev => 
-      prev.map(act => 
-        act.id === updatedActivity.id ? updatedActivity : act
-      )
+    const updatedActivities = activities.map(act => 
+      act.id === updatedActivity.id ? updatedActivity : act
     );
+    setActivities(updatedActivities);
+    saveUserActivities(updatedActivities);
     setEditingActivity(null);
   };
 
   const handleActivityDelete = (activityId) => {
-    setActivities(prev => prev.filter(act => act.id !== activityId));
+    const updatedActivities = activities.filter(act => act.id !== activityId);
+    setActivities(updatedActivities);
+    saveUserActivities(updatedActivities);
   };
 
   const handleAddActivity = () => {
@@ -245,7 +222,9 @@ const Finitude = () => {
       frequency: 1,
       description: "A new meaningful moment"
     };
-    setActivities(prev => [...prev, newActivity]);
+    const updatedActivities = [...activities, newActivity];
+    setActivities(updatedActivities);
+    saveUserActivities(updatedActivities);
     setEditingActivity(newActivity);
   };
 

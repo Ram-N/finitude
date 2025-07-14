@@ -1,0 +1,700 @@
+{
+  "activities": [
+    {
+      "id": "seasons",
+      "name": "Seasons",
+      "category": "nature",
+      "description": "The eternal cycle of renewal",
+      "frequency": {
+        "times": 4,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🍂",
+        "color": "#DEB887"
+      },
+      "metadata": {
+        "user_created": false,
+        "is_active": true
+      }
+    },
+    {
+      "id": "deep_conversations",
+      "name": "Deep Conversations",
+      "category": "relationships",
+      "description": "Connections that touch the soul",
+      "frequency": {
+        "times": 4,
+        "period": "month"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "💭",
+        "color": "#9370DB"
+      },
+      "metadata": {
+        "user_created": false,
+        "is_active": true
+      }
+    },
+    {
+      "id": "new_years_eve",
+      "name": "New Year's Eves",
+      "category": "celebration",
+      "description": "Fresh starts and new possibilities",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎆",
+        "color": "#FFD700"
+      },
+      "metadata": {
+        "user_created": false,
+        "is_active": true
+      }
+    },
+    {
+      "id": "sunsets_watched",
+      "name": "Sunsets Watched",
+      "category": "nature",
+      "description": "Weekly sunsets you consciously stop to admire",
+      "frequency": {
+        "times": 1,
+        "period": "week"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌅",
+        "color": "#FF6347"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "morning_coffee",
+      "name": "Morning Coffees",
+      "category": "daily_life",
+      "description": "Quiet moments to start each day mindfully",
+      "frequency": {
+        "times": 1,
+        "period": "day"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "☕",
+        "color": "#8B4513"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "walks_runs",
+      "name": "Walks or Runs",
+      "category": "health",
+      "description": "Steps towards health and clarity",
+      "frequency": {
+        "times": 3,
+        "period": "week"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏃",
+        "color": "#32CD32"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "books_to_read",
+      "name": "Books to Read",
+      "category": "personal_growth",
+      "description": "Stories and wisdom waiting to transform you",
+      "frequency": {
+        "times": 10,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📚",
+        "color": "#8B4513"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "movies_to_watch",
+      "name": "Movies to Watch",
+      "category": "entertainment",
+      "description": "Adventures and emotions on the silver screen",
+      "frequency": {
+        "times": 2,
+        "period": "week"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎬",
+        "color": "#4169E1"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "family_dinners",
+      "name": "Family Dinners",
+      "category": "relationships",
+      "description": "Weekly moments that bind us together",
+      "frequency": {
+        "times": 1,
+        "period": "week"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🍽️",
+        "color": "#FF69B4"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "vacations_with_partner",
+      "name": "Vacations with Partner",
+      "category": "travel",
+      "description": "Annual journeys to create shared memories",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "💑",
+        "color": "#FF1493"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "parties_gatherings",
+      "name": "Parties or Gatherings",
+      "category": "relationships",
+      "description": "Monthly celebrations and social connections",
+      "frequency": {
+        "times": 1,
+        "period": "month"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎉",
+        "color": "#FF4500"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "flights_abroad",
+      "name": "Flights Abroad",
+      "category": "travel",
+      "description": "Adventures across borders and cultures",
+      "frequency": {
+        "times": 3,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "✈️",
+        "color": "#00CED1"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "concerts_live_events",
+      "name": "Concerts or Live Events",
+      "category": "entertainment",
+      "description": "Moments of shared musical magic",
+      "frequency": {
+        "times": 2,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎵",
+        "color": "#8A2BE2"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "restaurant_meals",
+      "name": "Restaurant Meals",
+      "category": "experiences",
+      "description": "Monthly culinary adventures and discoveries",
+      "frequency": {
+        "times": 1,
+        "period": "month"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🍽️",
+        "color": "#DC143C"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "takeout_meals",
+      "name": "Takeout Meals",
+      "category": "experiences",
+      "description": "Monthly treats from your favorite local spots",
+      "frequency": {
+        "times": 1,
+        "period": "month"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🥡",
+        "color": "#FFA500"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "new_cities_explore",
+      "name": "New Cities to Explore",
+      "category": "travel",
+      "description": "Biennial discoveries of new urban landscapes",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏙️",
+        "color": "#4682B4"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "workouts",
+      "name": "Workouts",
+      "category": "health",
+      "description": "Twice-weekly investments in your strength",
+      "frequency": {
+        "times": 2,
+        "period": "week"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "💪",
+        "color": "#FF4500"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "dental_visits",
+      "name": "Dental Visits",
+      "category": "health",
+      "description": "Biannual care for your smile",
+      "frequency": {
+        "times": 2,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🦷",
+        "color": "#00BFFF"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "doctor_checkups",
+      "name": "Doctor Checkups",
+      "category": "health",
+      "description": "Annual investments in your wellbeing",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🩺",
+        "color": "#228B22"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "haircuts",
+      "name": "Haircuts",
+      "category": "health",
+      "description": "Monthly moments of self-care and renewal",
+      "frequency": {
+        "times": 1,
+        "period": "month"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "✂️",
+        "color": "#9370DB"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "morning_sunrises",
+      "name": "Morning Sunrises Watched",
+      "category": "nature",
+      "description": "Bimonthly moments of dawn's quiet beauty",
+      "frequency": {
+        "times": 6,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌄",
+        "color": "#FFB347"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "daily_journaling",
+      "name": "Daily Journaling Sessions",
+      "category": "reflection",
+      "description": "Daily conversations with your inner self",
+      "frequency": {
+        "times": 1,
+        "period": "day"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📔",
+        "color": "#8B4513"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "rainy_days_enjoy",
+      "name": "Rainy Days to Enjoy",
+      "category": "nature",
+      "description": "Annual moments of cozy contemplation",
+      "frequency": {
+        "times": 20,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌧️",
+        "color": "#708090"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "your_birthdays",
+      "name": "Your Birthdays",
+      "category": "celebration",
+      "description": "Annual celebrations of your unique journey",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎂",
+        "color": "#FFD700"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "learning_courses",
+      "name": "Learning Courses or Books",
+      "category": "personal_growth",
+      "description": "Annual investments in expanding your mind",
+      "frequency": {
+        "times": 3,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎓",
+        "color": "#4169E1"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "new_projects",
+      "name": "New Projects Started",
+      "category": "personal_growth",
+      "description": "Annual creative endeavors and challenges",
+      "frequency": {
+        "times": 10,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🚀",
+        "color": "#FF4500"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "monday_mornings",
+      "name": "Monday Mornings",
+      "category": "universal",
+      "description": "Weekly fresh starts and new beginnings",
+      "frequency": {
+        "times": 52,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌅",
+        "color": "#87CEEB"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "full_moons_notice",
+      "name": "Full Moons to Notice",
+      "category": "universal",
+      "description": "Monthly reminders to look up and wonder",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌕",
+        "color": "#C0C0C0"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "winters_remaining",
+      "name": "Winters Remaining",
+      "category": "universal",
+      "description": "Annual cycles of reflection and renewal",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "❄️",
+        "color": "#B0E0E6"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    },
+    {
+      "id": "sundays",
+      "name": "Sundays",
+      "category": "universal",
+      "description": "Weekly rhythms of rest and reflection",
+      "frequency": {
+        "times": 52,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🕊️",
+        "color": "#DDA0DD"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true
+      }
+    }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "created_at": "2025-07-14T00:00:00Z",
+    "last_updated": "2025-07-14T12:00:00Z",
+    "total_activities": 30
+  }
+}
