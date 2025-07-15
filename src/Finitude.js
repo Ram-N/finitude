@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   loadDefaultActivities, 
   convertActivitiesToLegacyFormat,
-  getRandomQuote 
+  getRandomQuote,
+  generateCalculationBreakdown 
 } from './utils/dataLoader';
 import { 
   loadUserProfile, 
@@ -25,6 +26,9 @@ const Finitude = () => {
   const [editingActivity, setEditingActivity] = useState(null);
   const [currentCardType, setCurrentCardType] = useState('activity'); // 'activity' or 'quote'
   const [currentQuote, setCurrentQuote] = useState(null);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [flipTimer, setFlipTimer] = useState(null);
+  const [wasAutoPlayingBeforeFlip, setWasAutoPlayingBeforeFlip] = useState(false);
   const intervalRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -91,6 +95,7 @@ const Finitude = () => {
     setProgress(0);
     
     // Progress animation
+    const progressInterval = (tickInterval * 1000) / 100; // Calculate interval for smooth progress
     progressRef.current = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -98,7 +103,7 @@ const Finitude = () => {
         }
         return prev + 1;
       });
-    }, 50);
+    }, progressInterval);
 
     // Card rotation
     intervalRef.current = setInterval(() => {
@@ -113,7 +118,7 @@ const Finitude = () => {
   };
 
   useEffect(() => {
-    if (isAutoPlaying && cardsWithCounts.length > 0) {
+    if (isAutoPlaying && cardsWithCounts.length > 0 && !isFlipped) {
       startAutoPlay();
     } else {
       stopAutoPlay();
@@ -121,14 +126,40 @@ const Finitude = () => {
 
     return () => {
       stopAutoPlay();
+      if (flipTimer) {
+        clearTimeout(flipTimer);
+      }
     };
-  }, [isAutoPlaying, currentCard, cardsWithCounts.length, startAutoPlay]);
+  }, [isAutoPlaying, currentCard, cardsWithCounts.length, startAutoPlay, isFlipped, flipTimer, wasAutoPlayingBeforeFlip]);
 
   const nextCard = () => {
+    // Reset flip state when navigating
+    if (isFlipped) {
+      clearTimeout(flipTimer);
+      setIsFlipped(false);
+      setFlipTimer(null);
+      // Resume auto-play if it was playing before flip
+      if (wasAutoPlayingBeforeFlip) {
+        setIsAutoPlaying(true);
+        setWasAutoPlayingBeforeFlip(false);
+      }
+    }
     navigateToNextCard();
   };
 
   const prevCard = useCallback(() => {
+    // Reset flip state when navigating
+    if (isFlipped) {
+      clearTimeout(flipTimer);
+      setIsFlipped(false);
+      setFlipTimer(null);
+      // Resume auto-play if it was playing before flip
+      if (wasAutoPlayingBeforeFlip) {
+        setIsAutoPlaying(true);
+        setWasAutoPlayingBeforeFlip(false);
+      }
+    }
+    
     if (cardsWithCounts.length > 0) {
       // Determine if previous card should be a quote or activity
       const shouldShowQuote = Math.random() < quoteProbability;
@@ -142,7 +173,7 @@ const Finitude = () => {
       }
       setProgress(0);
     }
-  }, [cardsWithCounts.length, quoteProbability]);
+  }, [cardsWithCounts.length, quoteProbability, isFlipped, flipTimer, wasAutoPlayingBeforeFlip]);
 
   const handleTouchStart = (e) => {
     setTouchEnd(null);
@@ -168,6 +199,44 @@ const Finitude = () => {
   };
 
   const handleCardClick = () => {
+    if (isFlipped) {
+      // If already flipped, flip back immediately
+      clearTimeout(flipTimer);
+      setIsFlipped(false);
+      setFlipTimer(null);
+      // Resume auto-play if it was playing before flip
+      if (wasAutoPlayingBeforeFlip) {
+        setIsAutoPlaying(true);
+        setWasAutoPlayingBeforeFlip(false);
+      }
+    } else {
+      // Remember current auto-play state before flipping
+      setWasAutoPlayingBeforeFlip(isAutoPlaying);
+      
+      // Pause auto-play when flipping
+      if (isAutoPlaying) {
+        setIsAutoPlaying(false);
+      }
+      
+      // Flip to back side
+      setIsFlipped(true);
+      
+      // Set timer to auto-flip back after 5 seconds
+      const timer = setTimeout(() => {
+        setIsFlipped(false);
+        setFlipTimer(null);
+        // Resume auto-play if it was playing before flip
+        if (wasAutoPlayingBeforeFlip) {
+          setIsAutoPlaying(true);
+          setWasAutoPlayingBeforeFlip(false);
+        }
+      }, 5000);
+      
+      setFlipTimer(timer);
+    }
+  };
+
+  const handlePlayPauseClick = () => {
     setIsAutoPlaying(!isAutoPlaying);
   };
 
@@ -553,8 +622,97 @@ const Finitude = () => {
     );
   };
 
+  // Activity Back Side Component
+  const ActivityBackSide = ({ activity, yearsRemaining }) => {
+    if (!activity) return null;
+    
+    // Handle legacy format (yearly frequency number) vs new format (times/period object)
+    if (typeof activity.frequency === 'number') {
+      // Legacy format - show simple calculation
+      const yearlyFrequency = activity.frequency;
+      const totalCount = Math.floor(yearlyFrequency * yearsRemaining);
+      
+      return (
+        <div className="p-6 pt-8 text-center">
+          <h2 className="text-lg font-light text-slate-700 mb-4">
+            {activity.name}
+          </h2>
+          
+          <div className="space-y-3 text-left max-w-sm mx-auto">
+            {/* Frequency */}
+            <div className="flex justify-between items-center py-2 border-b border-slate-200">
+              <span className="text-sm text-slate-600">Frequency:</span>
+              <span className="text-sm font-medium text-slate-800">{yearlyFrequency} per year</span>
+            </div>
+            
+            {/* Time Remaining */}
+            <div className="flex justify-between items-center py-2 border-b border-slate-200">
+              <span className="text-sm text-slate-600">Time left:</span>
+              <span className="text-sm font-medium text-slate-800">{Math.floor(yearsRemaining)} years remaining</span>
+            </div>
+            
+            {/* Calculation */}
+            <div className="py-2 text-center">
+              <div className="text-xs text-slate-500 mb-1">Calculation</div>
+              <div className="text-lg font-light text-slate-800 font-mono">
+                {yearlyFrequency} × {Math.floor(yearsRemaining)} = {totalCount.toLocaleString()}
+              </div>
+            </div>
+            
+            {/* Result */}
+            <div className="text-center py-2 bg-slate-100 rounded-lg">
+              <div className="text-sm font-medium text-slate-700">
+                {totalCount.toLocaleString()} opportunities left
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    // New format - use the advanced breakdown
+    const breakdown = generateCalculationBreakdown(activity, yearsRemaining);
+    
+    return (
+      <div className="p-6 pt-8 text-center">
+        <h2 className="text-lg font-light text-slate-700 mb-4">
+          {activity.name}
+        </h2>
+        
+        <div className="space-y-3 text-left max-w-sm mx-auto">
+          {/* Frequency */}
+          <div className="flex justify-between items-center py-2 border-b border-slate-200">
+            <span className="text-sm text-slate-600">Frequency:</span>
+            <span className="text-sm font-medium text-slate-800">{breakdown.frequency}</span>
+          </div>
+          
+          {/* Time Remaining */}
+          <div className="flex justify-between items-center py-2 border-b border-slate-200">
+            <span className="text-sm text-slate-600">Time left:</span>
+            <span className="text-sm font-medium text-slate-800">{breakdown.timeRemaining}</span>
+          </div>
+          
+          {/* Calculation */}
+          <div className="py-2 text-center">
+            <div className="text-xs text-slate-500 mb-1">Calculation</div>
+            <div className="text-lg font-light text-slate-800 font-mono">
+              {breakdown.calculation}
+            </div>
+          </div>
+          
+          {/* Result */}
+          <div className="text-center py-2 bg-slate-100 rounded-lg">
+            <div className="text-sm font-medium text-slate-700">
+              {breakdown.result}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Quote Card Component
-  const QuoteCard = ({ quote }) => {
+  const QuoteCard = ({ quote, progress }) => {
     if (!quote) return null;
     
     // Dynamic font sizing based on quote length
@@ -577,9 +735,17 @@ const Finitude = () => {
           "{quote.quote}"
         </blockquote>
         
-        <cite className="text-sm text-slate-500 not-italic">
+        <cite className="text-sm text-slate-500 not-italic mb-6">
           — {quote.author}
         </cite>
+        
+        {/* Progress Bar */}
+        <div className="h-1 bg-stone-200 rounded-full overflow-hidden">
+          <div 
+            className="h-full bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-75 ease-linear"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
     );
   };
@@ -609,49 +775,105 @@ const Finitude = () => {
 
           {/* Main Card */}
           <div 
-            className={`relative rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer select-none ${
-              currentCardType === 'quote' 
-                ? 'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200' 
-                : 'bg-white'
-            }`}
+            className="card-flip-container"
+            style={{ 
+              perspective: '1000px', 
+              minHeight: '300px',
+              border: 'none',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 25px 25px -5px rgba(0, 0, 0, 0.15)',
+              borderRadius: '16px',
+              background: currentCardType === 'quote' 
+                ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
+                : '#ffffff'
+            }}
             onClick={handleCardClick}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Progress Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-stone-200 rounded-t-2xl overflow-hidden">
+            <div 
+              className={`card-flipper ${isFlipped ? 'flipped' : ''}`}
+              style={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.8s',
+                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }}
+            >
+              {/* Front Side */}
               <div 
-                className="h-full bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-75 ease-linear"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-
-            {/* Card Content */}
-            {currentCardType === 'quote' && currentQuote ? (
-              <QuoteCard quote={currentQuote} />
-            ) : (
-              <div className="p-8 pt-10 text-center">
-                <div className="text-4xl mb-4 animate-pulse">
-                  {currentActivity.icon}
-                </div>
-                
-                <h2 className="text-xl font-light text-slate-700 mb-2">
-                  {currentActivity.name}
-                </h2>
-                
-                <div className="text-5xl font-light text-slate-800 mb-4 transition-all duration-500">
-                  {currentActivity.count.toLocaleString()}
-                </div>
-                
-                <p className="text-sm text-slate-500 italic leading-relaxed">
-                  {currentActivity.description}
-                </p>
+                className="card-face card-front cursor-pointer select-none transition-all duration-300 card-border"
+                style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(0deg)',
+                  borderRadius: '16px',
+                  background: currentCardType === 'quote' 
+                    ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
+                    : '#ffffff',
+                }}
+              >
+                {/* Card Content */}
+                {currentCardType === 'quote' && currentQuote ? (
+                  <QuoteCard quote={currentQuote} progress={progress} />
+                ) : (
+                  <div className="p-8 pt-10 text-center">
+                    <div className="text-4xl mb-4 animate-pulse">
+                      {currentActivity.icon}
+                    </div>
+                    
+                    <h2 className="text-xl font-light text-slate-700 mb-2">
+                      {currentActivity.name}
+                    </h2>
+                    
+                    <div className="text-5xl font-light text-slate-800 mb-4 transition-all duration-500">
+                      {currentActivity.count.toLocaleString()}
+                    </div>
+                    
+                    <p className="text-sm text-slate-500 italic leading-relaxed mb-6">
+                      {currentActivity.description}
+                    </p>
+                    
+                    {/* Progress Bar */}
+                    <div className="h-1 bg-stone-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-75 ease-linear"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+
+              {/* Back Side */}
+              <div 
+                className={`card-face card-back cursor-pointer select-none ${currentCardType === 'quote' ? 'card-border-quote' : 'card-border'}`}
+                style={{
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                  borderRadius: '16px',
+                  background: currentCardType === 'quote' 
+                    ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
+                    : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                }}
+              >
+                {currentCardType === 'activity' ? (
+                  <ActivityBackSide activity={currentActivity} yearsRemaining={yearsRemaining} />
+                ) : (
+                  <QuoteCard quote={currentQuote} progress={progress} />
+                )}
+              </div>
+            </div>
           </div>
 
-          {/* Navigation */}
+          {/* Navigation and Controls */}
           <div className="flex justify-between items-center mt-6">
             <button
               onClick={prevCard}
@@ -662,6 +884,34 @@ const Finitude = () => {
               </svg>
             </button>
 
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={handlePlayPauseClick}
+                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-slate-600 hover:text-slate-800"
+              >
+                {isAutoPlaying ? (
+                  // Pause icon - two parallel bars
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                  </svg>
+                ) : (
+                  // Play icon - triangle
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                )}
+              </button>
+              
+              <button
+                onClick={handleSettingsClick}
+                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-slate-600 hover:text-slate-800"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </button>
+            </div>
 
             <button
               onClick={nextCard}
@@ -669,26 +919,6 @@ const Finitude = () => {
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Controls */}
-          <div className="flex justify-center items-center space-x-4 mt-6">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="px-6 py-2 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-slate-600 hover:text-slate-800 text-sm"
-            >
-              {isAutoPlaying ? 'Pause' : 'Play'}
-            </button>
-            
-            <button
-              onClick={handleSettingsClick}
-              className="p-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-slate-600 hover:text-slate-800"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </button>
           </div>
