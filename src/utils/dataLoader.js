@@ -2,6 +2,7 @@
 import defaultActivities from '../data/activities/default-activities.json';
 import defaultProfile from '../data/users/default-profile.json';
 import defaultSettings from '../data/users/default-settings.json';
+import finitudeQuotes from '../data/quotes/finitude-quotes.json';
 
 /**
  * Loads the default activities from JSON
@@ -76,4 +77,24 @@ export const getCurrentAge = (profile) => {
 export const getYearsRemaining = (profile) => {
   const currentAge = getCurrentAge(profile);
   return profile.life_expectancy.years - currentAge;
+};
+
+/**
+ * Loads the finitude quotes from JSON
+ * @returns {Array} Array of quote objects
+ */
+export const loadFinitudeQuotes = () => {
+  return finitudeQuotes || [];
+};
+
+/**
+ * Gets a random quote from the quotes array
+ * @returns {Object} Random quote object with id, quote, and author
+ */
+export const getRandomQuote = () => {
+  const quotes = loadFinitudeQuotes();
+  if (quotes.length === 0) return null;
+  
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
 };

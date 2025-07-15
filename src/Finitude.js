@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   loadDefaultActivities, 
-  convertActivitiesToLegacyFormat 
+  convertActivitiesToLegacyFormat,
+  getRandomQuote 
 } from './utils/dataLoader';
 import { 
   loadUserProfile, 
@@ -22,6 +23,8 @@ const Finitude = () => {
   const [userSettings, setUserSettings] = useState(null);
   const [activities, setActivities] = useState([]);
   const [editingActivity, setEditingActivity] = useState(null);
+  const [currentCardType, setCurrentCardType] = useState('activity'); // 'activity' or 'quote'
+  const [currentQuote, setCurrentQuote] = useState(null);
   const intervalRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -30,6 +33,7 @@ const Finitude = () => {
   const currentAge = userProfile?.demographics?.age || 57;
   const firstName = userProfile?.name || '';
   const tickInterval = userSettings?.display?.tick_interval_seconds || 5;
+  const quoteProbability = userSettings?.display?.quote_probability || 0.2;
 
   const yearsRemaining = lifeExpectancy - currentAge;
 
@@ -64,6 +68,22 @@ const Finitude = () => {
     count: Math.floor(activity.frequency * yearsRemaining)
   }));
 
+  const navigateToNextCard = useCallback(() => {
+    if (cardsWithCounts.length > 0) {
+      // Determine if next card should be a quote or activity
+      const shouldShowQuote = Math.random() < quoteProbability;
+      
+      if (shouldShowQuote) {
+        setCurrentCardType('quote');
+        setCurrentQuote(getRandomQuote());
+      } else {
+        setCurrentCardType('activity');
+        setCurrentCard(prev => (prev + 1) % cardsWithCounts.length);
+      }
+      setProgress(0);
+    }
+  }, [cardsWithCounts.length, quoteProbability]);
+
   const startAutoPlay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (progressRef.current) clearInterval(progressRef.current);
@@ -82,10 +102,9 @@ const Finitude = () => {
 
     // Card rotation
     intervalRef.current = setInterval(() => {
-      setCurrentCard(prev => (prev + 1) % cardsWithCounts.length);
-      setProgress(0);
+      navigateToNextCard();
     }, tickInterval * 1000);
-  }, [cardsWithCounts.length, tickInterval]);
+  }, [tickInterval, navigateToNextCard]);
 
   const stopAutoPlay = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -106,18 +125,24 @@ const Finitude = () => {
   }, [isAutoPlaying, currentCard, cardsWithCounts.length, startAutoPlay]);
 
   const nextCard = () => {
-    if (cardsWithCounts.length > 0) {
-      setCurrentCard(prev => (prev + 1) % cardsWithCounts.length);
-      setProgress(0);
-    }
+    navigateToNextCard();
   };
 
-  const prevCard = () => {
+  const prevCard = useCallback(() => {
     if (cardsWithCounts.length > 0) {
-      setCurrentCard(prev => (prev - 1 + cardsWithCounts.length) % cardsWithCounts.length);
+      // Determine if previous card should be a quote or activity
+      const shouldShowQuote = Math.random() < quoteProbability;
+      
+      if (shouldShowQuote) {
+        setCurrentCardType('quote');
+        setCurrentQuote(getRandomQuote());
+      } else {
+        setCurrentCardType('activity');
+        setCurrentCard(prev => (prev - 1 + cardsWithCounts.length) % cardsWithCounts.length);
+      }
       setProgress(0);
     }
-  };
+  }, [cardsWithCounts.length, quoteProbability]);
 
   const handleTouchStart = (e) => {
     setTouchEnd(null);
@@ -528,6 +553,37 @@ const Finitude = () => {
     );
   };
 
+  // Quote Card Component
+  const QuoteCard = ({ quote }) => {
+    if (!quote) return null;
+    
+    // Dynamic font sizing based on quote length
+    const getQuoteFontSize = (text) => {
+      if (text.length < 50) return 'text-2xl';
+      if (text.length < 100) return 'text-xl';
+      if (text.length < 150) return 'text-lg';
+      return 'text-base';
+    };
+
+    return (
+      <div className="p-8 pt-10 text-center">
+        <div className="mb-6">
+          <svg className="w-8 h-8 mx-auto text-amber-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+          </svg>
+        </div>
+        
+        <blockquote className={`${getQuoteFontSize(quote.quote)} font-light text-slate-800 mb-6 italic leading-relaxed`}>
+          "{quote.quote}"
+        </blockquote>
+        
+        <cite className="text-sm text-slate-500 not-italic">
+          — {quote.author}
+        </cite>
+      </div>
+    );
+  };
+
   if (cardsWithCounts.length === 0) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-stone-100 flex items-center justify-center p-4">
@@ -553,7 +609,11 @@ const Finitude = () => {
 
           {/* Main Card */}
           <div 
-            className="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer select-none"
+            className={`relative rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer select-none ${
+              currentCardType === 'quote' 
+                ? 'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200' 
+                : 'bg-white'
+            }`}
             onClick={handleCardClick}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -568,23 +628,27 @@ const Finitude = () => {
             </div>
 
             {/* Card Content */}
-            <div className="p-8 pt-10 text-center">
-              <div className="text-4xl mb-4 animate-pulse">
-                {currentActivity.icon}
+            {currentCardType === 'quote' && currentQuote ? (
+              <QuoteCard quote={currentQuote} />
+            ) : (
+              <div className="p-8 pt-10 text-center">
+                <div className="text-4xl mb-4 animate-pulse">
+                  {currentActivity.icon}
+                </div>
+                
+                <h2 className="text-xl font-light text-slate-700 mb-2">
+                  {currentActivity.name}
+                </h2>
+                
+                <div className="text-5xl font-light text-slate-800 mb-4 transition-all duration-500">
+                  {currentActivity.count.toLocaleString()}
+                </div>
+                
+                <p className="text-sm text-slate-500 italic leading-relaxed">
+                  {currentActivity.description}
+                </p>
               </div>
-              
-              <h2 className="text-xl font-light text-slate-700 mb-2">
-                {currentActivity.name}
-              </h2>
-              
-              <div className="text-5xl font-light text-slate-800 mb-4 transition-all duration-500">
-                {currentActivity.count.toLocaleString()}
-              </div>
-              
-              <p className="text-sm text-slate-500 italic leading-relaxed">
-                {currentActivity.description}
-              </p>
-            </div>
+            )}
           </div>
 
           {/* Navigation */}
