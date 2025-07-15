@@ -45,14 +45,18 @@ const Finitude = () => {
 
     // Load activities (user customizations or defaults)
     const userActivities = loadUserActivities();
+    let activitiesToSet;
     if (userActivities && userActivities.length > 0) {
-      setActivities(userActivities);
+      activitiesToSet = userActivities;
     } else {
       // Convert new format activities to legacy format for compatibility
       const defaultActivitiesData = loadDefaultActivities();
-      const legacyFormatActivities = convertActivitiesToLegacyFormat(defaultActivitiesData);
-      setActivities(legacyFormatActivities);
+      activitiesToSet = convertActivitiesToLegacyFormat(defaultActivitiesData);
     }
+    
+    // Shuffle the activities array for random display order
+    const shuffledActivities = [...activitiesToSet].sort(() => Math.random() - 0.5);
+    setActivities(shuffledActivities);
   }, []);
 
   const cardsWithCounts = activities.map(activity => ({
@@ -594,16 +598,6 @@ const Finitude = () => {
               </svg>
             </button>
 
-            <div className="flex space-x-2">
-              {cardsWithCounts.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentCard ? 'bg-amber-400' : 'bg-stone-300'
-                  }`}
-                />
-              ))}
-            </div>
 
             <button
               onClick={nextCard}
