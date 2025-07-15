@@ -4,7 +4,6 @@
       "id": "seasons",
       "name": "Seasons",
       "category": "nature",
-      "description": "The eternal cycle of renewal",
       "frequency": {
         "times": 4,
         "period": "year"
@@ -20,17 +19,19 @@
       },
       "metadata": {
         "user_created": false,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465347",
+        "source": "csv_import"
+      },
+      "description": "The eternal cycle of renewal"
     },
     {
       "id": "deep_conversations",
       "name": "Deep Conversations",
       "category": "relationships",
-      "description": "Connections that touch the soul",
       "frequency": {
-        "times": 4,
-        "period": "month"
+        "times": 48,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -43,14 +44,16 @@
       },
       "metadata": {
         "user_created": false,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465439",
+        "source": "csv_import"
+      },
+      "description": "Connections that touch the soul"
     },
     {
-      "id": "new_years_eve",
+      "id": "new_years_eves",
       "name": "New Year's Eves",
       "category": "celebration",
-      "description": "Fresh starts and new possibilities",
       "frequency": {
         "times": 1,
         "period": "year"
@@ -66,17 +69,19 @@
       },
       "metadata": {
         "user_created": false,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465489",
+        "source": "csv_import"
+      },
+      "description": "Fresh starts and new possibilities"
     },
     {
       "id": "sunsets_watched",
       "name": "Sunsets Watched",
       "category": "nature",
-      "description": "Weekly sunsets you consciously stop to admire",
       "frequency": {
-        "times": 1,
-        "period": "week"
+        "times": 52,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -89,17 +94,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465550",
+        "source": "csv_import"
+      },
+      "description": "Weekly sunsets you consciously stop to admire"
     },
     {
-      "id": "morning_coffee",
+      "id": "morning_coffees",
       "name": "Morning Coffees",
       "category": "daily_life",
-      "description": "Quiet moments to start each day mindfully",
       "frequency": {
-        "times": 1,
-        "period": "day"
+        "times": 365,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -112,17 +119,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465610",
+        "source": "csv_import"
+      },
+      "description": "Quiet moments to start each day mindfully"
     },
     {
-      "id": "walks_runs",
-      "name": "Walks or Runs",
+      "id": "morning_walks_left",
+      "name": "Morning Walks Left",
       "category": "health",
-      "description": "Steps towards health and clarity",
       "frequency": {
-        "times": 3,
-        "period": "week"
+        "times": 156,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -135,16 +144,18 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465652",
+        "source": "csv_import"
+      },
+      "description": "Steps towards health and clarity"
     },
     {
       "id": "books_to_read",
       "name": "Books to Read",
       "category": "personal_growth",
-      "description": "Stories and wisdom waiting to transform you",
       "frequency": {
-        "times": 10,
+        "times": 36,
         "period": "year"
       },
       "age_range": {
@@ -158,17 +169,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465696",
+        "source": "csv_import"
+      },
+      "description": "Stories and wisdom waiting to transform you"
     },
     {
       "id": "movies_to_watch",
       "name": "Movies to Watch",
       "category": "entertainment",
-      "description": "Adventures and emotions on the silver screen",
       "frequency": {
-        "times": 2,
-        "period": "week"
+        "times": 104,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -181,17 +194,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465755",
+        "source": "csv_import"
+      },
+      "description": "Adventures and emotions on the silver screen"
     },
     {
       "id": "family_dinners",
       "name": "Family Dinners",
       "category": "relationships",
-      "description": "Weekly moments that bind us together",
       "frequency": {
-        "times": 1,
-        "period": "week"
+        "times": 52,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -204,22 +219,24 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": false,
+        "created_at": "2025-07-15T16:17:18.465797",
+        "source": "csv_import"
+      },
+      "description": "Weekly moments that bind us together"
     },
     {
-      "id": "vacations_with_partner",
-      "name": "Vacations with Partner",
+      "id": "vacations_with_rupal",
+      "name": "Vacations with Rupal",
       "category": "travel",
-      "description": "Annual journeys to create shared memories",
       "frequency": {
-        "times": 1,
+        "times": 3,
         "period": "year"
       },
       "age_range": {
         "start": 0,
-        "end": null,
-        "flexible_end": true
+        "end": 75,
+        "flexible_end": false
       },
       "display": {
         "icon": "💑",
@@ -227,17 +244,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465836",
+        "source": "csv_import"
+      },
+      "description": "Annual journeys to create shared memories"
     },
     {
-      "id": "parties_gatherings",
+      "id": "parties_or_gatherings",
       "name": "Parties or Gatherings",
       "category": "relationships",
-      "description": "Monthly celebrations and social connections",
       "frequency": {
-        "times": 1,
-        "period": "month"
+        "times": 12,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -250,14 +269,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465897",
+        "source": "csv_import"
+      },
+      "description": "Monthly celebrations and social connections"
     },
     {
       "id": "flights_abroad",
       "name": "Flights Abroad",
       "category": "travel",
-      "description": "Adventures across borders and cultures",
       "frequency": {
         "times": 3,
         "period": "year"
@@ -273,14 +294,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.465970",
+        "source": "csv_import"
+      },
+      "description": "Adventures across borders and cultures"
     },
     {
-      "id": "concerts_live_events",
+      "id": "concerts_or_live_events",
       "name": "Concerts or Live Events",
       "category": "entertainment",
-      "description": "Moments of shared musical magic",
       "frequency": {
         "times": 2,
         "period": "year"
@@ -296,17 +319,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466031",
+        "source": "csv_import"
+      },
+      "description": "Moments of shared musical magic"
     },
     {
       "id": "restaurant_meals",
       "name": "Restaurant Meals",
       "category": "experiences",
-      "description": "Monthly culinary adventures and discoveries",
       "frequency": {
-        "times": 1,
-        "period": "month"
+        "times": 12,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -319,17 +344,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466094",
+        "source": "csv_import"
+      },
+      "description": "Monthly culinary adventures and discoveries"
     },
     {
       "id": "takeout_meals",
       "name": "Takeout Meals",
       "category": "experiences",
-      "description": "Monthly treats from your favorite local spots",
       "frequency": {
-        "times": 1,
-        "period": "month"
+        "times": 12,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -342,16 +369,18 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466137",
+        "source": "csv_import"
+      },
+      "description": "Monthly treats from your favorite local spots"
     },
     {
-      "id": "new_cities_explore",
+      "id": "new_cities_to_explore",
       "name": "New Cities to Explore",
       "category": "travel",
-      "description": "Biennial discoveries of new urban landscapes",
       "frequency": {
-        "times": 1,
+        "times": 3,
         "period": "year"
       },
       "age_range": {
@@ -365,17 +394,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466177",
+        "source": "csv_import"
+      },
+      "description": "Biennial discoveries of new urban landscapes"
     },
     {
       "id": "workouts",
       "name": "Workouts",
       "category": "health",
-      "description": "Twice-weekly investments in your strength",
       "frequency": {
-        "times": 2,
-        "period": "week"
+        "times": 104,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -388,14 +419,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466233",
+        "source": "csv_import"
+      },
+      "description": "Twice-weekly investments in your strength"
     },
     {
       "id": "dental_visits",
       "name": "Dental Visits",
       "category": "health",
-      "description": "Biannual care for your smile",
       "frequency": {
         "times": 2,
         "period": "year"
@@ -411,14 +444,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466293",
+        "source": "csv_import"
+      },
+      "description": "Biannual care for your smile"
     },
     {
       "id": "doctor_checkups",
       "name": "Doctor Checkups",
       "category": "health",
-      "description": "Annual investments in your wellbeing",
       "frequency": {
         "times": 1,
         "period": "year"
@@ -434,17 +469,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466401",
+        "source": "csv_import"
+      },
+      "description": "Annual investments in your wellbeing"
     },
     {
       "id": "haircuts",
       "name": "Haircuts",
       "category": "health",
-      "description": "Monthly moments of self-care and renewal",
       "frequency": {
-        "times": 1,
-        "period": "month"
+        "times": 4,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -457,16 +494,18 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466459",
+        "source": "csv_import"
+      },
+      "description": "Monthly moments of self-care and renewal"
     },
     {
-      "id": "morning_sunrises",
+      "id": "morning_sunrises_watched",
       "name": "Morning Sunrises Watched",
       "category": "nature",
-      "description": "Bimonthly moments of dawn's quiet beauty",
       "frequency": {
-        "times": 6,
+        "times": 12,
         "period": "year"
       },
       "age_range": {
@@ -480,17 +519,19 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466518",
+        "source": "csv_import"
+      },
+      "description": "Moments of dawn's quiet beauty"
     },
     {
-      "id": "daily_journaling",
+      "id": "daily_journaling_sessions",
       "name": "Daily Journaling Sessions",
       "category": "reflection",
-      "description": "Daily conversations with your inner self",
       "frequency": {
-        "times": 1,
-        "period": "day"
+        "times": 365,
+        "period": "year"
       },
       "age_range": {
         "start": 0,
@@ -503,14 +544,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466581",
+        "source": "csv_import"
+      },
+      "description": "Daily conversations with your inner self"
     },
     {
-      "id": "rainy_days_enjoy",
+      "id": "rainy_days_to_enjoy",
       "name": "Rainy Days to Enjoy",
       "category": "nature",
-      "description": "Annual moments of cozy contemplation",
       "frequency": {
         "times": 20,
         "period": "year"
@@ -526,14 +569,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466640",
+        "source": "csv_import"
+      },
+      "description": "Annual moments of cozy contemplation"
     },
     {
       "id": "your_birthdays",
       "name": "Your Birthdays",
       "category": "celebration",
-      "description": "Annual celebrations of your unique journey",
       "frequency": {
         "times": 1,
         "period": "year"
@@ -549,14 +594,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466699",
+        "source": "csv_import"
+      },
+      "description": "Another trip around the sun"
     },
     {
-      "id": "learning_courses",
+      "id": "learning_courses_or_books",
       "name": "Learning Courses or Books",
       "category": "personal_growth",
-      "description": "Annual investments in expanding your mind",
       "frequency": {
         "times": 3,
         "period": "year"
@@ -572,22 +619,24 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466759",
+        "source": "csv_import"
+      },
+      "description": "Annual investments in expanding your mind"
     },
     {
-      "id": "new_projects",
+      "id": "new_projects_started",
       "name": "New Projects Started",
       "category": "personal_growth",
-      "description": "Annual creative endeavors and challenges",
       "frequency": {
         "times": 10,
         "period": "year"
       },
       "age_range": {
         "start": 0,
-        "end": null,
-        "flexible_end": true
+        "end": 72,
+        "flexible_end": false
       },
       "display": {
         "icon": "🚀",
@@ -595,14 +644,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466818",
+        "source": "csv_import"
+      },
+      "description": "Annual creative endeavors and challenges"
     },
     {
       "id": "monday_mornings",
       "name": "Monday Mornings",
       "category": "universal",
-      "description": "Weekly fresh starts and new beginnings",
       "frequency": {
         "times": 52,
         "period": "year"
@@ -618,22 +669,24 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466893",
+        "source": "csv_import"
+      },
+      "description": "Weekly fresh starts and new beginnings"
     },
     {
-      "id": "full_moons_notice",
+      "id": "full_moons_to_notice",
       "name": "Full Moons to Notice",
       "category": "universal",
-      "description": "Monthly reminders to look up and wonder",
       "frequency": {
         "times": 12,
         "period": "year"
       },
       "age_range": {
         "start": 0,
-        "end": null,
-        "flexible_end": true
+        "end": 75,
+        "flexible_end": false
       },
       "display": {
         "icon": "🌕",
@@ -641,14 +694,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.466953",
+        "source": "csv_import"
+      },
+      "description": "Monthly reminders to look up and wonder"
     },
     {
       "id": "winters_remaining",
       "name": "Winters Remaining",
       "category": "universal",
-      "description": "Annual cycles of reflection and renewal",
       "frequency": {
         "times": 1,
         "period": "year"
@@ -664,14 +719,16 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467039",
+        "source": "csv_import"
+      },
+      "description": "Annual cycles of reflection and renewal"
     },
     {
       "id": "sundays",
       "name": "Sundays",
       "category": "universal",
-      "description": "Weekly rhythms of rest and reflection",
       "frequency": {
         "times": 52,
         "period": "year"
@@ -687,14 +744,269 @@
       },
       "metadata": {
         "user_created": true,
-        "is_active": true
-      }
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467097",
+        "source": "csv_import"
+      },
+      "description": "Weekly rhythms of rest and reflection"
+    },
+    {
+      "id": "family_dinners",
+      "name": "Family Dinners",
+      "category": "social",
+      "frequency": {
+        "times": 104,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 5,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🍽️",
+        "color": "#E74C3C"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": false,
+        "created_at": "2025-07-15T16:17:18.467155",
+        "source": "csv_import"
+      },
+      "description": "Gathering around the table with loved ones"
+    },
+    {
+      "id": "travel_books_to_read",
+      "name": "Travel Books to Read",
+      "category": "learning",
+      "frequency": {
+        "times": 6,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 10,
+        "end": 75,
+        "flexible_end": false
+      },
+      "display": {
+        "icon": "📚",
+        "color": "#9B59B6"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467213",
+        "source": "csv_import"
+      },
+      "description": "Getting lost in different worlds and ideas"
+    },
+    {
+      "id": "camping_trips",
+      "name": "Camping Trips",
+      "category": "travel",
+      "frequency": {
+        "times": 4,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 8,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "⛺",
+        "color": "#1ABC9C"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": false,
+        "created_at": "2025-07-15T16:17:18.467285",
+        "source": "csv_import"
+      },
+      "description": "Sleeping under the stars and reconnecting with nature"
+    },
+    {
+      "id": "rupals_birthdays",
+      "name": "Rupal's Birthdays",
+      "category": "celebration",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 1,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎂",
+        "color": "#FFD700"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467342",
+        "source": "csv_import"
+      },
+      "description": "Another trip around the sun"
+    },
+    {
+      "id": "morning_runs",
+      "name": "Morning Runs",
+      "category": "exercise",
+      "frequency": {
+        "times": 150,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏃",
+        "color": "#2ECC71"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": false,
+        "created_at": "2025-07-15T16:17:18.467398",
+        "source": "csv_import"
+      },
+      "description": "Starting the day with endorphins"
+    },
+    {
+      "id": "garden_planted",
+      "name": "Garden Planted",
+      "category": "nature",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 25,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🌱",
+        "color": "#FF6347"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": false,
+        "created_at": "2025-07-15T16:17:18.467454",
+        "source": "csv_import"
+      },
+      "description": "Growing your own food and flowers"
+    },
+    {
+      "id": "movie_nights_w_rupal",
+      "name": "Movie Nights w/ Rupal",
+      "category": "routine",
+      "frequency": {
+        "times": 52,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 6,
+        "end": 75,
+        "flexible_end": false
+      },
+      "display": {
+        "icon": "🎬",
+        "color": "#4A90E2"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467513",
+        "source": "csv_import"
+      },
+      "description": "Popcorn and stories on the couch"
+    },
+    {
+      "id": "beach_days",
+      "name": "Beach Days",
+      "category": "nature",
+      "frequency": {
+        "times": 20,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 3,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏖️",
+        "color": "#FF6347"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467586",
+        "source": "csv_import"
+      },
+      "description": "Sand between your toes and salt in the air"
+    },
+    {
+      "id": "game_nights",
+      "name": "Game Nights",
+      "category": "social",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 8,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎲",
+        "color": "#E74C3C"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467640",
+        "source": "csv_import"
+      },
+      "description": "Friendly competition and laughter"
+    },
+    {
+      "id": "concerts_to_attend",
+      "name": "Concerts To Attend",
+      "category": "hobby",
+      "frequency": {
+        "times": 3,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 14,
+        "end": 75,
+        "flexible_end": false
+      },
+      "display": {
+        "icon": "🎵",
+        "color": "#16A085"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-15T16:17:18.467696",
+        "source": "csv_import"
+      },
+      "description": "Live music and shared energy"
     }
   ],
   "metadata": {
     "version": "2.0",
-    "created_at": "2025-07-14T00:00:00Z",
-    "last_updated": "2025-07-14T12:00:00Z",
-    "total_activities": 30
+    "created_at": "2025-07-15T16:17:18.467775",
+    "last_updated": "2025-07-15T16:17:18.467777",
+    "total_activities": 40,
+    "source": "csv_import",
+    "generated_by": "convert_activities_in_sheets_to_JSON.py"
   }
 }

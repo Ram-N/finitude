@@ -19,6 +19,7 @@
 .env.production.local
 
 .claude
+.venv/
 
 npm-debug.log*
 yarn-debug.log*

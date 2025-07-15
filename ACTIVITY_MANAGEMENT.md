@@ -204,25 +204,117 @@ Choose from these categories or create new ones:
 
 ## 🎨 Advanced Customizations
 
-### Age Ranges
+### Age Ranges and Life Expectancy
 
-Limit activities to specific life periods:
+Age ranges control when activities are relevant in your life and interact with your life expectancy setting in `/src/data/users/default-profile.json`.
+
+#### Age Range Fields
+
+- **`start`**: Age when activity becomes relevant (0 = from birth)
+- **`end`**: Age when activity stops being relevant (null = until death)
+- **`flexible_end`**: Whether the end age should adjust with life expectancy changes
+
+#### Life Expectancy Interaction
+
+The system calculates remaining occurrences using your life expectancy. For example, with age 57 and life expectancy 80:
 
 ```json
-// Activity starts at age 25, ends at 65 (retirement)
-"age_range": {
-  "start": 25,
-  "end": 65,
-  "flexible_end": false
+// Current user profile
+{
+  "demographics": { "age": 57 },
+  "life_expectancy": { "years": 80 }
 }
 
-// Activity for remaining life (adjusts with life expectancy)
+// Activity calculation
+"frequency": { "times": 4, "period": "year" }
+// Remaining years: 80 - 57 = 23
+// Remaining seasons: 23 × 4 = 92 seasons
+```
+
+#### flexible_end: true vs false
+
+**`flexible_end: true`** - Adjusts with life expectancy:
+```json
+// Activity continues until death
 "age_range": {
   "start": 0,
   "end": null,
   "flexible_end": true
 }
+// If life expectancy changes from 80 to 85, activity extends 5 more years
 ```
+
+**`flexible_end: false`** - Hard stop at specified age:
+```json
+// College exams stop at 22 regardless of life expectancy
+"age_range": {
+  "start": 18,
+  "end": 22,
+  "flexible_end": false
+}
+// Even if you live to 100, college exams only calculated for ages 18-22
+```
+
+#### Practical Examples
+
+**College Activities** (fixed timeframe):
+```json
+{
+  "id": "college_exams",
+  "name": "College Exams",
+  "category": "education",
+  "frequency": { "times": 8, "period": "year" },
+  "age_range": {
+    "start": 18,
+    "end": 22,
+    "flexible_end": false  // Hard stop at graduation
+  }
+}
+```
+
+**Career Activities** (retirement-based):
+```json
+{
+  "id": "career_promotions",
+  "name": "Career Promotions",
+  "category": "work",
+  "frequency": { "times": 1, "period": "3 years" },
+  "age_range": {
+    "start": 25,
+    "end": 65,
+    "flexible_end": false  // Hard stop at retirement
+  }
+}
+```
+
+**Lifelong Activities** (adjusts with longevity):
+```json
+{
+  "id": "sunsets_watched",
+  "name": "Sunsets Watched",
+  "category": "nature",
+  "frequency": { "times": 2, "period": "week" },
+  "age_range": {
+    "start": 0,
+    "end": null,
+    "flexible_end": true  // Continues until death
+  }
+}
+```
+
+#### The Mortality Clock Effect
+
+This creates a "mortality clock" showing remaining experiences:
+
+- **Life Expectancy 80, Current Age 57**:
+  - Remaining birthdays: 23 (80 - 57)
+  - Remaining seasons: 92 (23 × 4)
+  - Remaining vacations: 23 (23 × 1)
+
+- **If Life Expectancy Updated to 85**:
+  - Remaining birthdays: 28 (85 - 57)
+  - Remaining seasons: 112 (28 × 4)
+  - Activities with `flexible_end: true` automatically recalculate
 
 ### Color Theming
 

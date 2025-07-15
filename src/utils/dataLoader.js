@@ -5,11 +5,13 @@ import defaultSettings from '../data/users/default-settings.json';
 import finitudeQuotes from '../data/quotes/finitude-quotes.json';
 
 /**
- * Loads the default activities from JSON
- * @returns {Array} Array of activity objects
+ * Loads the default activities from JSON, filtering out inactive ones
+ * @returns {Array} Array of active activity objects
  */
 export const loadDefaultActivities = () => {
-  return defaultActivities.activities || [];
+  const allActivities = defaultActivities.activities || [];
+  // Filter out activities where is_active is false
+  return allActivities.filter(activity => activity.metadata.is_active !== false);
 };
 
 /**

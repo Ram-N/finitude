@@ -207,8 +207,9 @@ const Finitude = () => {
       // Resume auto-play if it was playing before flip
       if (wasAutoPlayingBeforeFlip) {
         setIsAutoPlaying(true);
-        setWasAutoPlayingBeforeFlip(false);
       }
+      // Always reset the state after manual flip back
+      setWasAutoPlayingBeforeFlip(false);
     } else {
       // Remember current auto-play state before flipping
       setWasAutoPlayingBeforeFlip(isAutoPlaying);
@@ -228,8 +229,9 @@ const Finitude = () => {
         // Resume auto-play if it was playing before flip
         if (wasAutoPlayingBeforeFlip) {
           setIsAutoPlaying(true);
-          setWasAutoPlayingBeforeFlip(false);
         }
+        // Always reset the state after auto flip back
+        setWasAutoPlayingBeforeFlip(false);
       }, 5000);
       
       setFlipTimer(timer);
