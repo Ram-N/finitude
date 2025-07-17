@@ -1,5 +1,5 @@
 /**
- * Calculation utilities for activity counts and age-based estimations
+ * Calculation utilities for activity counts, financial calculations, and age-based estimations
  */
 
 /**
@@ -122,5 +122,62 @@ export const updateProfileAge = (profile) => {
       ...profile.demographics,
       age: getCurrentAge(profile)
     }
+  };
+};
+
+/**
+ * Calculates the total financial cost for a financial activity over the remaining lifetime
+ * @param {Object} activity - Financial activity with amount, unit, and currency
+ * @param {Object} profile - User profile with age and life expectancy
+ * @returns {number} Total financial cost for the remaining lifetime
+ */
+export const calculateFinancialTotal = (activity, profile) => {
+  if (!activity.financial || !activity.financial.amount) {
+    return 0;
+  }
+  
+  const occurrences = calculateRemainingOccurrences(activity, profile);
+  const amount = activity.financial.amount;
+  
+  return occurrences * amount;
+};
+
+/**
+ * Formats a currency value with appropriate symbol and decimal places
+ * @param {number} amount - Amount to format
+ * @param {string} currency - Currency code (e.g., USD)
+ * @returns {string} Formatted currency string
+ */
+export const formatCurrency = (amount, currency = 'USD') => {
+  const currencyFormatters = {
+    USD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }),
+    EUR: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }),
+    GBP: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' }),
+    CAD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD' }),
+    AUD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'AUD' }),
+    JPY: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'JPY' }),
+  };
+  
+  const formatter = currencyFormatters[currency] || currencyFormatters.USD;
+  return formatter.format(amount);
+};
+
+/**
+ * Generates a detailed breakdown for financial activity calculations
+ * @param {Object} activity - Financial activity object
+ * @param {Object} profile - User profile
+ * @returns {Object} Detailed breakdown for display
+ */
+export const generateFinancialBreakdown = (activity, profile) => {
+  const occurrences = calculateRemainingOccurrences(activity, profile);
+  const { amount, unit, currency } = activity.financial;
+  const total = occurrences * amount;
+  
+  return {
+    occurrences,
+    amountPerUnit: formatCurrency(amount, currency),
+    unit,
+    total: formatCurrency(total, currency),
+    calculation: `${occurrences} × ${formatCurrency(amount, currency)}`,
   };
 };

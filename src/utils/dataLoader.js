@@ -52,13 +52,28 @@ export const convertToYearlyFrequency = (frequency) => {
  * @returns {Array} Activities in legacy format
  */
 export const convertActivitiesToLegacyFormat = (activities) => {
-  return activities.map((activity, index) => ({
-    id: index + 1, // Legacy format uses sequential numbers
-    name: activity.name,
-    icon: activity.display.icon,
-    frequency: convertToYearlyFrequency(activity.frequency),
-    description: activity.description
-  }));
+  return activities.map((activity, index) => {
+    // Base activity object for all types
+    const baseActivity = {
+      id: index + 1, // Legacy format uses sequential numbers
+      name: activity.name,
+      icon: activity.display.icon,
+      frequency: convertToYearlyFrequency(activity.frequency),
+      description: activity.description,
+      type: activity.type || 'experiential', // Default to experiential if not specified
+    };
+    
+    // Add financial data if this is a financial activity
+    if (activity.type === 'financial' && activity.financial) {
+      return {
+        ...baseActivity,
+        financial: { ...activity.financial },
+        display: { ...activity.display }, // Include display format (currency vs occurrences)
+      };
+    }
+    
+    return baseActivity;
+  });
 };
 
 /**
@@ -188,6 +203,12 @@ export const calculateTimeRemaining = (yearsRemaining, frequency) => {
  * @returns {Object} Calculation breakdown object
  */
 export const generateCalculationBreakdown = (activity, yearsRemaining) => {
+  // If this is a financial activity, generate financial breakdown
+  if (activity.type === 'financial' && activity.financial) {
+    return generateFinancialBreakdown(activity, yearsRemaining);
+  }
+  
+  // Otherwise generate standard experiential breakdown
   const frequency = activity.frequency;
   const timeRemaining = calculateTimeRemaining(yearsRemaining, frequency);
   const totalCount = Math.floor(convertToYearlyFrequency(frequency) * yearsRemaining);
@@ -197,5 +218,58 @@ export const generateCalculationBreakdown = (activity, yearsRemaining) => {
     timeRemaining: timeRemaining.display,
     calculation: `${frequency.times} × ${timeRemaining.amount.toLocaleString()} = ${totalCount.toLocaleString()}`,
     result: `${totalCount.toLocaleString()} opportunities left`
+  };
+};
+
+/**
+ * Generates financial breakdown for financial activity card back side
+ * @param {Object} activity - Financial activity object
+ * @param {number} yearsRemaining - Years remaining in life
+ * @returns {Object} Financial calculation breakdown object
+ */
+export const generateFinancialBreakdown = (activity, yearsRemaining) => {
+  console.log('Financial breakdown input:', activity, yearsRemaining);
+  
+  // Safely extract financial data with defaults
+  const { amount = 0, unit = 'month', currency = 'USD' } = activity.financial || {};
+  
+  // Handle frequency in both legacy format (number) and new format (object)
+  let totalOccurrences = 0;
+  let frequencyDisplay = '';
+  
+  if (typeof activity.frequency === 'object' && activity.frequency.times) {
+    // New format frequency
+    const frequency = activity.frequency;
+    const timeRemaining = calculateTimeRemaining(yearsRemaining, frequency);
+    totalOccurrences = Math.floor(convertToYearlyFrequency(frequency) * yearsRemaining);
+    frequencyDisplay = formatFrequency(frequency);
+  } else if (typeof activity.frequency === 'number') {
+    // Legacy format frequency (simple number)
+    const yearlyFrequency = activity.frequency || 12; // Default to 12 if undefined
+    totalOccurrences = Math.floor(yearlyFrequency * yearsRemaining);
+    frequencyDisplay = `${yearlyFrequency} per year`;
+  }
+  
+  // Calculate total amount
+  const totalAmount = amount * totalOccurrences;
+  
+  // Format amount with currency
+  const formatCurrency = (value, curr = 'USD') => {
+    return new Intl.NumberFormat('en-US', { 
+      style: 'currency', 
+      currency: curr,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(value);
+  };
+  
+  return {
+    frequency: frequencyDisplay,
+    timeRemaining: `${Math.floor(yearsRemaining)} years remaining`,
+    calculation: `${totalOccurrences.toLocaleString()} × ${formatCurrency(amount, currency)}`,
+    perUnit: `per ${unit}`,
+    amount: formatCurrency(amount, currency),
+    totalAmount: formatCurrency(totalAmount, currency),
+    result: `${formatCurrency(totalAmount, currency)} total cost`
   };
 };

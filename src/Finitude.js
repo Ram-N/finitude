@@ -3,7 +3,8 @@ import {
   loadDefaultActivities, 
   convertActivitiesToLegacyFormat,
   getRandomQuote,
-  generateCalculationBreakdown 
+  generateCalculationBreakdown,
+  generateFinancialBreakdown
 } from './utils/dataLoader';
 import { 
   loadUserProfile, 
@@ -12,6 +13,11 @@ import {
   loadUserActivities,
   saveUserActivities 
 } from './utils/userManager';
+import {
+  formatCurrency,
+  calculateFinancialTotal,
+  generateFinancialBreakdown as calculateFinancialBreakdown
+} from './utils/calculations';
 
 const Finitude = () => {
   const [currentCard, setCurrentCard] = useState(0);
@@ -67,10 +73,27 @@ const Finitude = () => {
     setActivities(shuffledActivities);
   }, []);
 
-  const cardsWithCounts = activities.map(activity => ({
-    ...activity,
-    count: Math.floor(activity.frequency * yearsRemaining)
-  }));
+  const cardsWithCounts = activities.map(activity => {
+    // Standard activity with count
+    const baseActivity = {
+      ...activity,
+      count: Math.floor(activity.frequency * yearsRemaining)
+    };
+    
+    // Add financial data for financial activities
+    if (activity.type === 'financial' && activity.financial) {
+      const occurrences = Math.floor(activity.frequency * yearsRemaining);
+      const totalAmount = activity.financial.amount * occurrences;
+      
+      return {
+        ...baseActivity,
+        occurrences: occurrences,
+        totalAmount: totalAmount
+      };
+    }
+    
+    return baseActivity;
+  });
 
   const navigateToNextCard = useCallback(() => {
     if (cardsWithCounts.length > 0) {
@@ -543,15 +566,39 @@ const Finitude = () => {
     const [icon, setIcon] = useState(activity.icon);
     const [frequency, setFrequency] = useState(activity.frequency);
     const [description, setDescription] = useState(activity.description);
+    const [type, setType] = useState(activity.type || 'experiential');
+    
+    // Financial activity properties
+    const [amount, setAmount] = useState(activity.financial?.amount || 0);
+    const [unit, setUnit] = useState(activity.financial?.unit || 'month');
+    const [currency, setCurrency] = useState(activity.financial?.currency || 'USD');
 
     const handleSave = () => {
-      onSave({
+      const updatedActivity = {
         ...activity,
         name,
         icon,
         frequency: parseFloat(frequency),
-        description
-      });
+        description,
+        type
+      };
+      
+      // Add financial data if type is financial
+      if (type === 'financial') {
+        updatedActivity.financial = {
+          amount: parseFloat(amount),
+          unit,
+          currency
+        };
+        
+        // Set the display format to currency for financial activities
+        updatedActivity.display = {
+          ...updatedActivity.display,
+          format: 'currency'
+        };
+      }
+      
+      onSave(updatedActivity);
     };
 
     return (
@@ -603,6 +650,77 @@ const Finitude = () => {
                 className="w-full p-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400 h-20 resize-none"
               />
             </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">Activity Type</label>
+              <select
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                className="w-full p-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400"
+              >
+                <option value="experiential">Experiential</option>
+                <option value="financial">Financial</option>
+                <option value="quote">Quote</option>
+              </select>
+            </div>
+            
+            {type === 'financial' && (
+              <div className="space-y-4 p-4 bg-green-50 rounded-xl">
+                <h4 className="font-medium text-green-800">Financial Details</h4>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Amount</label>
+                  <input
+                    type="number"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    className="w-full p-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Unit</label>
+                  <select
+                    value={unit}
+                    onChange={(e) => setUnit(e.target.value)}
+                    className="w-full p-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                    <option value="week">Week</option>
+                    <option value="visit">Visit</option>
+                    <option value="meal">Meal</option>
+                    <option value="ride">Ride</option>
+                    <option value="night">Night</option>
+                    <option value="roundtrip">Roundtrip</option>
+                    <option value="tank">Tank</option>
+                    <option value="cut">Cut</option>
+                    <option value="service">Service</option>
+                    <option value="quarter">Quarter</option>
+                    <option value="event">Event</option>
+                    <option value="hour">Hour</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Currency</label>
+                  <select
+                    value={currency}
+                    onChange={(e) => setCurrency(e.target.value)}
+                    className="w-full p-3 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="CAD">CAD (C$)</option>
+                    <option value="AUD">AUD (A$)</option>
+                    <option value="JPY">JPY (¥)</option>
+                  </select>
+                </div>
+              </div>
+            )}
           </div>
           
           <div className="p-6 border-t border-stone-200 flex space-x-3">
@@ -624,8 +742,8 @@ const Finitude = () => {
     );
   };
 
-  // Activity Back Side Component
-  const ActivityBackSide = ({ activity, yearsRemaining }) => {
+  // Activity Back Side Component for Experiential Activities
+  const ExperientialActivityBackSide = ({ activity, yearsRemaining }) => {
     if (!activity) return null;
     
     // Handle legacy format (yearly frequency number) vs new format (times/period object)
@@ -635,7 +753,7 @@ const Finitude = () => {
       const totalCount = Math.floor(yearlyFrequency * yearsRemaining);
       
       return (
-        <div className="p-6 pt-8 text-center">
+        <div className="p-6 pt-8 flex flex-col justify-center items-center h-full text-center">
           <h2 className="text-lg font-light text-slate-700 mb-4">
             {activity.name}
           </h2>
@@ -676,7 +794,7 @@ const Finitude = () => {
     const breakdown = generateCalculationBreakdown(activity, yearsRemaining);
     
     return (
-      <div className="p-6 pt-8 text-center">
+      <div className="p-6 pt-8 flex flex-col justify-center items-center h-full text-center">
         <h2 className="text-lg font-light text-slate-700 mb-4">
           {activity.name}
         </h2>
@@ -713,6 +831,72 @@ const Finitude = () => {
     );
   };
 
+  // Financial Activity Back Side Component
+  const FinancialActivityBackSide = ({ activity, yearsRemaining }) => {
+    if (!activity?.financial) return null;
+    
+    // Get financial breakdown
+    const breakdown = generateFinancialBreakdown(activity, yearsRemaining);
+    
+    return (
+      <div className="p-3 pt-5 flex flex-col justify-center items-center h-full text-center financial-card-back">
+        <h2 className="text-base font-light text-slate-700 mb-2">
+          {activity.name}
+        </h2>
+        
+        <div className="space-y-2 text-left mx-auto">
+          {/* Cost Per Unit */}
+          <div className="flex justify-between items-center py-2 border-b border-slate-200">
+            <span className="text-sm text-slate-600">Cost:</span>
+            <span className="text-sm font-medium text-slate-800">
+              {breakdown.amount} per {activity.financial.unit}
+            </span>
+          </div>
+          
+          {/* Frequency */}
+          <div className="flex justify-between items-center py-2 border-b border-slate-200">
+            <span className="text-sm text-slate-600">Frequency:</span>
+            <span className="text-sm font-medium text-slate-800">{breakdown.frequency}</span>
+          </div>
+          
+          {/* Time Remaining */}
+          <div className="flex justify-between items-center py-2 border-b border-slate-200">
+            <span className="text-sm text-slate-600">Time left:</span>
+            <span className="text-sm font-medium text-slate-800">{breakdown.timeRemaining}</span>
+          </div>
+          
+          {/* Calculation */}
+          <div className="py-2 text-center">
+            <div className="text-xs text-slate-500 mb-1">Total Cost Calculation</div>
+            <div className="text-lg font-light text-slate-800 font-mono">
+              {breakdown.calculation}
+            </div>
+          </div>
+          
+          {/* Result */}
+          <div className="text-center py-2 bg-green-50 rounded-lg">
+            <div className="text-sm font-medium text-green-800">
+              {breakdown.result}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Main Activity Back Side Component (dispatcher)
+  const ActivityBackSide = ({ activity, yearsRemaining }) => {
+    if (!activity) return null;
+    
+    // Dispatch to appropriate activity type
+    if (activity.type === 'financial' && activity.financial) {
+      return <FinancialActivityBackSide activity={activity} yearsRemaining={yearsRemaining} />;
+    }
+    
+    // Default to experiential
+    return <ExperientialActivityBackSide activity={activity} yearsRemaining={yearsRemaining} />;
+  };
+
   // Quote Card Component
   const QuoteCard = ({ quote, progress }) => {
     if (!quote) return null;
@@ -726,7 +910,7 @@ const Finitude = () => {
     };
 
     return (
-      <div className="p-8 pt-10 text-center">
+      <div className="p-8 flex flex-col justify-center items-center h-full text-center">
         <div className="mb-6">
           <svg className="w-8 h-8 mx-auto text-amber-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
@@ -776,72 +960,59 @@ const Finitude = () => {
           </div>
 
           {/* Main Card */}
-          <div 
-            className="card-flip-container"
-            style={{ 
-              perspective: '1000px', 
-              minHeight: '300px',
-              border: 'none',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 25px 25px -5px rgba(0, 0, 0, 0.15)',
-              borderRadius: '16px',
-              background: currentCardType === 'quote' 
-                ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
-                : '#ffffff'
-            }}
-            onClick={handleCardClick}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div 
-              className={`card-flipper ${isFlipped ? 'flipped' : ''}`}
-              style={{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
-                transformStyle: 'preserve-3d',
-                transition: 'transform 0.8s',
-                transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
-              }}
-            >
+          <div className="card-container mb-2" onClick={handleCardClick} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+            <div className={`card ${isFlipped ? 'flipped' : ''} ${currentActivity.type === 'financial' ? 'financial-card' : ''} ${currentCardType === 'quote' ? 'quote-card' : ''}`}>
               {/* Front Side */}
-              <div 
-                className="card-face card-front cursor-pointer select-none transition-all duration-300 card-border"
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  backfaceVisibility: 'hidden',
-                  transform: 'rotateY(0deg)',
-                  borderRadius: '16px',
-                  background: currentCardType === 'quote' 
-                    ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
-                    : '#ffffff',
-                }}
-              >
+              <div className="card-front">
                 {/* Card Content */}
                 {currentCardType === 'quote' && currentQuote ? (
                   <QuoteCard quote={currentQuote} progress={progress} />
-                ) : (
-                  <div className="p-8 pt-10 text-center">
-                    <div className="text-4xl mb-4 animate-pulse">
+                ) : currentActivity.type === 'financial' ? (
+                  <div className="p-4 flex flex-col justify-center items-center h-full text-center">
+                    <div className="text-4xl mb-2 animate-pulse">
                       {currentActivity.icon}
                     </div>
                     
-                    <h2 className="text-xl font-light text-slate-700 mb-2">
+                    <h2 className="text-lg font-light text-slate-700 mb-1">
                       {currentActivity.name}
                     </h2>
                     
-                    <div className="text-5xl font-light text-slate-800 mb-4 transition-all duration-500">
+                    <div className="text-3xl font-light text-green-600 mb-2 transition-all duration-500">
+                      {formatCurrency(currentActivity.totalAmount, currentActivity.financial.currency)}
+                    </div>
+                    
+                    <p className="text-xs text-slate-500 italic leading-relaxed mb-2">
+                      remaining in {currentActivity.description}
+                    </p>
+                    
+                    {/* Progress Bar */}
+                    <div className="h-1 bg-stone-200 rounded-full overflow-hidden w-full max-w-[200px]">
+                      <div 
+                        className="h-full bg-gradient-to-r from-emerald-400 to-green-500 transition-all duration-75 ease-linear"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-4 flex flex-col justify-center items-center h-full text-center">
+                    <div className="text-4xl mb-2 animate-pulse">
+                      {currentActivity.icon}
+                    </div>
+                    
+                    <h2 className="text-lg font-light text-slate-700 mb-1">
+                      {currentActivity.name}
+                    </h2>
+                    
+                    <div className="text-3xl font-light text-slate-800 mb-2 transition-all duration-500">
                       {currentActivity.count.toLocaleString()}
                     </div>
                     
-                    <p className="text-sm text-slate-500 italic leading-relaxed mb-6">
+                    <p className="text-xs text-slate-500 italic leading-relaxed mb-2">
                       {currentActivity.description}
                     </p>
                     
                     {/* Progress Bar */}
-                    <div className="h-1 bg-stone-200 rounded-full overflow-hidden">
+                    <div className="h-1 bg-stone-200 rounded-full overflow-hidden w-full max-w-[200px]">
                       <div 
                         className="h-full bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-75 ease-linear"
                         style={{ width: `${progress}%` }}
@@ -852,20 +1023,7 @@ const Finitude = () => {
               </div>
 
               {/* Back Side */}
-              <div 
-                className={`card-face card-back cursor-pointer select-none ${currentCardType === 'quote' ? 'card-border-quote' : 'card-border'}`}
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  backfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg)',
-                  borderRadius: '16px',
-                  background: currentCardType === 'quote' 
-                    ? 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)' 
-                    : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-                }}
-              >
+              <div className="card-back">
                 {currentCardType === 'activity' ? (
                   <ActivityBackSide activity={currentActivity} yearsRemaining={yearsRemaining} />
                 ) : (
@@ -876,7 +1034,7 @@ const Finitude = () => {
           </div>
 
           {/* Navigation and Controls */}
-          <div className="flex justify-between items-center mt-6">
+          <div className="flex justify-between items-center mt-2">
             <button
               onClick={prevCard}
               className="p-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 text-slate-600 hover:text-slate-800"

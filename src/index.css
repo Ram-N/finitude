@@ -16,3 +16,105 @@ code {
     monospace;
 }
 
+/* Custom card styles for different activity types */
+.financial-card-front {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  box-shadow: none;
+}
+
+.financial-card-back {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  max-height: 100%;
+}
+
+.financial-card-back h2 {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.financial-card-back .text-sm {
+  font-size: 0.75rem;
+}
+
+.financial-card-back .py-2 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.financial-card-back .space-y-3 > * + * {
+  margin-top: 0.5rem;
+}
+
+/* Card flip animations and styles */
+/* Card border styles */
+.card-border {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-border-quote {
+  border: 1px solid rgba(251, 146, 60, 0.2);
+}
+
+/* Financial card styles */
+.financial-card-front,
+.financial-card-back {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+/* Card flip animation */
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: white;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  transform: rotateY(180deg);
+}
+
+/* Financial card overrides */
+.financial-card .card-front {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  box-shadow: none;
+}
+
+.financial-card .card-back {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+/* Quote card overrides */
+.quote-card .card-front,
+.quote-card .card-back {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+}
+
