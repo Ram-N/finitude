@@ -6,7 +6,7 @@
     "show_progress_bar": true,
     "card_transition": "slide",
     "quote_probability": 0.2,
-    "show_financial_cards": true,
+    "show_financial_cards": false,
     "hide_cents": true
   },
   "audio": {
