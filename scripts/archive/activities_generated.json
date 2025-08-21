@@ -1,0 +1,252 @@
+[
+  {
+    "id": "family_dinners",
+    "name": "Family Dinners",
+    "category": "social",
+    "frequency": {
+      "times": 104,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 5,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🍽️",
+      "color": "#E74C3C"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279056",
+      "source": "csv_import"
+    },
+    "description": "Gathering around the table with loved ones"
+  },
+  {
+    "id": "books_read",
+    "name": "Books Read",
+    "category": "learning",
+    "frequency": {
+      "times": 12,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 10,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "📚",
+      "color": "#9B59B6"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279179",
+      "source": "csv_import"
+    },
+    "description": "Getting lost in different worlds and ideas"
+  },
+  {
+    "id": "camping_trips",
+    "name": "Camping Trips",
+    "category": "travel",
+    "frequency": {
+      "times": 4,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 8,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "⛺",
+      "color": "#1ABC9C"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279248",
+      "source": "csv_import"
+    },
+    "description": "Sleeping under the stars and reconnecting with nature"
+  },
+  {
+    "id": "birthday_celebrations",
+    "name": "Birthday Celebrations",
+    "category": "celebration",
+    "frequency": {
+      "times": 1,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 1,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🎂",
+      "color": "#FFD700"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279294",
+      "source": "csv_import"
+    },
+    "description": "Another trip around the sun"
+  },
+  {
+    "id": "morning_runs",
+    "name": "Morning Runs",
+    "category": "exercise",
+    "frequency": {
+      "times": 150,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 16,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🏃",
+      "color": "#2ECC71"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279354",
+      "source": "csv_import"
+    },
+    "description": "Starting the day with endorphins"
+  },
+  {
+    "id": "garden_planted",
+    "name": "Garden Planted",
+    "category": "nature",
+    "frequency": {
+      "times": 1,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 25,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🌱",
+      "color": "#FF6347"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279423",
+      "source": "csv_import"
+    },
+    "description": "Growing your own food and flowers"
+  },
+  {
+    "id": "movie_nights",
+    "name": "Movie Nights",
+    "category": "routine",
+    "frequency": {
+      "times": 52,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 6,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🎬",
+      "color": "#4A90E2"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279485",
+      "source": "csv_import"
+    },
+    "description": "Popcorn and stories on the couch"
+  },
+  {
+    "id": "beach_days",
+    "name": "Beach Days",
+    "category": "nature",
+    "frequency": {
+      "times": 20,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 3,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🏖️",
+      "color": "#FF6347"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279548",
+      "source": "csv_import"
+    },
+    "description": "Sand between your toes and salt in the air"
+  },
+  {
+    "id": "game_nights",
+    "name": "Game Nights",
+    "category": "social",
+    "frequency": {
+      "times": 12,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 8,
+      "end": null,
+      "flexible_end": true
+    },
+    "display": {
+      "icon": "🎲",
+      "color": "#E74C3C"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279607",
+      "source": "csv_import"
+    },
+    "description": "Friendly competition and laughter"
+  },
+  {
+    "id": "concerts_to_attend",
+    "name": "Concerts To Attend",
+    "category": "hobby",
+    "frequency": {
+      "times": 3,
+      "period": "year"
+    },
+    "age_range": {
+      "start": 14,
+      "end": 75,
+      "flexible_end": false
+    },
+    "display": {
+      "icon": "🎵",
+      "color": "#16A085"
+    },
+    "metadata": {
+      "user_created": true,
+      "is_active": true,
+      "created_at": "2025-07-15T15:38:06.279668",
+      "source": "csv_import"
+    },
+    "description": "Live music and shared energy"
+  }
+]

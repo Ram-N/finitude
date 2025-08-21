@@ -1,0 +1,34 @@
+{
+  "activities": {
+    "_sheet_url_comment": "Your Google Sheets URL containing activities data",
+    "sheet_url": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit",
+    
+    "_tabs_comment": "GIDs for specific tabs (leave empty for auto-detection)",
+    "tabs": {
+      "experiences": "0",
+      "financial": "",
+      "quotes": ""
+    },
+    
+    "_default_output_comment": "Default output settings",
+    "default_output": {
+      "filename": "imported-activities.json",
+      "directory": "src/data/activities/"
+    },
+    
+    "_preferences_comment": "Script behavior preferences",
+    "preferences": {
+      "create_backups": true,
+      "default_replace": false,
+      "skip_financial": false,
+      "skip_quotes": false
+    }
+  },
+  
+  "_metadata_comment": "Automatically managed - do not edit",
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "",
+    "created_at": ""
+  }
+}

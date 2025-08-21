@@ -3,6 +3,7 @@
     {
       "id": "seasons",
       "name": "Seasons",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 4,
@@ -15,12 +16,13 @@
       },
       "display": {
         "icon": "🍂",
-        "color": "#DEB887"
+        "color": "#DEB887",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": false,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465347",
+        "created_at": "2025-07-17T11:16:18.300683",
         "source": "csv_import"
       },
       "description": "The eternal cycle of renewal"
@@ -28,6 +30,7 @@
     {
       "id": "deep_conversations",
       "name": "Deep Conversations",
+      "type": "experiential",
       "category": "relationships",
       "frequency": {
         "times": 48,
@@ -40,12 +43,13 @@
       },
       "display": {
         "icon": "💭",
-        "color": "#9370DB"
+        "color": "#9370DB",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": false,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465439",
+        "created_at": "2025-07-17T11:16:18.300771",
         "source": "csv_import"
       },
       "description": "Connections that touch the soul"
@@ -53,6 +57,7 @@
     {
       "id": "new_years_eves",
       "name": "New Year's Eves",
+      "type": "experiential",
       "category": "celebration",
       "frequency": {
         "times": 1,
@@ -65,12 +70,13 @@
       },
       "display": {
         "icon": "🎆",
-        "color": "#FFD700"
+        "color": "#FFD700",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": false,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465489",
+        "created_at": "2025-07-17T11:16:18.300852",
         "source": "csv_import"
       },
       "description": "Fresh starts and new possibilities"
@@ -78,6 +84,7 @@
     {
       "id": "sunsets_watched",
       "name": "Sunsets Watched",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 52,
@@ -90,12 +97,13 @@
       },
       "display": {
         "icon": "🌅",
-        "color": "#FF6347"
+        "color": "#FF6347",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465550",
+        "created_at": "2025-07-17T11:16:18.300929",
         "source": "csv_import"
       },
       "description": "Weekly sunsets you consciously stop to admire"
@@ -103,6 +111,7 @@
     {
       "id": "morning_coffees",
       "name": "Morning Coffees",
+      "type": "experiential",
       "category": "daily_life",
       "frequency": {
         "times": 365,
@@ -115,12 +124,13 @@
       },
       "display": {
         "icon": "☕",
-        "color": "#8B4513"
+        "color": "#8B4513",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465610",
+        "created_at": "2025-07-17T11:16:18.301005",
         "source": "csv_import"
       },
       "description": "Quiet moments to start each day mindfully"
@@ -128,6 +138,7 @@
     {
       "id": "morning_walks_left",
       "name": "Morning Walks Left",
+      "type": "experiential",
       "category": "health",
       "frequency": {
         "times": 156,
@@ -140,12 +151,13 @@
       },
       "display": {
         "icon": "🏃",
-        "color": "#32CD32"
+        "color": "#32CD32",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465652",
+        "created_at": "2025-07-17T11:16:18.301082",
         "source": "csv_import"
       },
       "description": "Steps towards health and clarity"
@@ -153,6 +165,7 @@
     {
       "id": "books_to_read",
       "name": "Books to Read",
+      "type": "experiential",
       "category": "personal_growth",
       "frequency": {
         "times": 36,
@@ -165,12 +178,13 @@
       },
       "display": {
         "icon": "📚",
-        "color": "#8B4513"
+        "color": "#8B4513",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465696",
+        "created_at": "2025-07-17T11:16:18.301147",
         "source": "csv_import"
       },
       "description": "Stories and wisdom waiting to transform you"
@@ -178,6 +192,7 @@
     {
       "id": "movies_to_watch",
       "name": "Movies to Watch",
+      "type": "experiential",
       "category": "entertainment",
       "frequency": {
         "times": 104,
@@ -190,12 +205,13 @@
       },
       "display": {
         "icon": "🎬",
-        "color": "#4169E1"
+        "color": "#4169E1",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465755",
+        "created_at": "2025-07-17T11:16:18.301224",
         "source": "csv_import"
       },
       "description": "Adventures and emotions on the silver screen"
@@ -203,6 +219,7 @@
     {
       "id": "family_dinners",
       "name": "Family Dinners",
+      "type": "experiential",
       "category": "relationships",
       "frequency": {
         "times": 52,
@@ -215,12 +232,13 @@
       },
       "display": {
         "icon": "🍽️",
-        "color": "#FF69B4"
+        "color": "#FF69B4",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": false,
-        "created_at": "2025-07-15T16:17:18.465797",
+        "created_at": "2025-07-17T11:16:18.301280",
         "source": "csv_import"
       },
       "description": "Weekly moments that bind us together"
@@ -228,6 +246,7 @@
     {
       "id": "vacations_with_rupal",
       "name": "Vacations with Rupal",
+      "type": "experiential",
       "category": "travel",
       "frequency": {
         "times": 3,
@@ -240,12 +259,13 @@
       },
       "display": {
         "icon": "💑",
-        "color": "#FF1493"
+        "color": "#FF1493",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465836",
+        "created_at": "2025-07-17T11:16:18.301355",
         "source": "csv_import"
       },
       "description": "Annual journeys to create shared memories"
@@ -253,6 +273,7 @@
     {
       "id": "parties_or_gatherings",
       "name": "Parties or Gatherings",
+      "type": "experiential",
       "category": "relationships",
       "frequency": {
         "times": 12,
@@ -265,12 +286,13 @@
       },
       "display": {
         "icon": "🎉",
-        "color": "#FF4500"
+        "color": "#FF4500",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465897",
+        "created_at": "2025-07-17T11:16:18.301430",
         "source": "csv_import"
       },
       "description": "Monthly celebrations and social connections"
@@ -278,6 +300,7 @@
     {
       "id": "flights_abroad",
       "name": "Flights Abroad",
+      "type": "experiential",
       "category": "travel",
       "frequency": {
         "times": 3,
@@ -290,12 +313,13 @@
       },
       "display": {
         "icon": "✈️",
-        "color": "#00CED1"
+        "color": "#00CED1",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.465970",
+        "created_at": "2025-07-17T11:16:18.301505",
         "source": "csv_import"
       },
       "description": "Adventures across borders and cultures"
@@ -303,6 +327,7 @@
     {
       "id": "concerts_or_live_events",
       "name": "Concerts or Live Events",
+      "type": "experiential",
       "category": "entertainment",
       "frequency": {
         "times": 2,
@@ -315,12 +340,13 @@
       },
       "display": {
         "icon": "🎵",
-        "color": "#8A2BE2"
+        "color": "#8A2BE2",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466031",
+        "created_at": "2025-07-17T11:16:18.301578",
         "source": "csv_import"
       },
       "description": "Moments of shared musical magic"
@@ -328,6 +354,7 @@
     {
       "id": "restaurant_meals",
       "name": "Restaurant Meals",
+      "type": "experiential",
       "category": "experiences",
       "frequency": {
         "times": 12,
@@ -340,12 +367,13 @@
       },
       "display": {
         "icon": "🍽️",
-        "color": "#DC143C"
+        "color": "#DC143C",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466094",
+        "created_at": "2025-07-17T11:16:18.301652",
         "source": "csv_import"
       },
       "description": "Monthly culinary adventures and discoveries"
@@ -353,6 +381,7 @@
     {
       "id": "takeout_meals",
       "name": "Takeout Meals",
+      "type": "experiential",
       "category": "experiences",
       "frequency": {
         "times": 12,
@@ -365,12 +394,13 @@
       },
       "display": {
         "icon": "🥡",
-        "color": "#FFA500"
+        "color": "#FFA500",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466137",
+        "created_at": "2025-07-17T11:16:18.301716",
         "source": "csv_import"
       },
       "description": "Monthly treats from your favorite local spots"
@@ -378,6 +408,7 @@
     {
       "id": "new_cities_to_explore",
       "name": "New Cities to Explore",
+      "type": "experiential",
       "category": "travel",
       "frequency": {
         "times": 3,
@@ -390,12 +421,13 @@
       },
       "display": {
         "icon": "🏙️",
-        "color": "#4682B4"
+        "color": "#4682B4",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466177",
+        "created_at": "2025-07-17T11:16:18.301791",
         "source": "csv_import"
       },
       "description": "Biennial discoveries of new urban landscapes"
@@ -403,6 +435,7 @@
     {
       "id": "workouts",
       "name": "Workouts",
+      "type": "experiential",
       "category": "health",
       "frequency": {
         "times": 104,
@@ -415,12 +448,13 @@
       },
       "display": {
         "icon": "💪",
-        "color": "#FF4500"
+        "color": "#FF4500",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466233",
+        "created_at": "2025-07-17T11:16:18.301839",
         "source": "csv_import"
       },
       "description": "Twice-weekly investments in your strength"
@@ -428,6 +462,7 @@
     {
       "id": "dental_visits",
       "name": "Dental Visits",
+      "type": "experiential",
       "category": "health",
       "frequency": {
         "times": 2,
@@ -440,12 +475,13 @@
       },
       "display": {
         "icon": "🦷",
-        "color": "#00BFFF"
+        "color": "#00BFFF",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466293",
+        "created_at": "2025-07-17T11:16:18.302076",
         "source": "csv_import"
       },
       "description": "Biannual care for your smile"
@@ -453,6 +489,7 @@
     {
       "id": "doctor_checkups",
       "name": "Doctor Checkups",
+      "type": "experiential",
       "category": "health",
       "frequency": {
         "times": 1,
@@ -465,12 +502,13 @@
       },
       "display": {
         "icon": "🩺",
-        "color": "#228B22"
+        "color": "#228B22",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466401",
+        "created_at": "2025-07-17T11:16:18.302217",
         "source": "csv_import"
       },
       "description": "Annual investments in your wellbeing"
@@ -478,6 +516,7 @@
     {
       "id": "haircuts",
       "name": "Haircuts",
+      "type": "experiential",
       "category": "health",
       "frequency": {
         "times": 4,
@@ -490,12 +529,13 @@
       },
       "display": {
         "icon": "✂️",
-        "color": "#9370DB"
+        "color": "#9370DB",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466459",
+        "created_at": "2025-07-17T11:16:18.302311",
         "source": "csv_import"
       },
       "description": "Monthly moments of self-care and renewal"
@@ -503,6 +543,7 @@
     {
       "id": "morning_sunrises_watched",
       "name": "Morning Sunrises Watched",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 12,
@@ -515,12 +556,13 @@
       },
       "display": {
         "icon": "🌄",
-        "color": "#FFB347"
+        "color": "#FFB347",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466518",
+        "created_at": "2025-07-17T11:16:18.302393",
         "source": "csv_import"
       },
       "description": "Moments of dawn's quiet beauty"
@@ -528,6 +570,7 @@
     {
       "id": "daily_journaling_sessions",
       "name": "Daily Journaling Sessions",
+      "type": "experiential",
       "category": "reflection",
       "frequency": {
         "times": 365,
@@ -540,12 +583,13 @@
       },
       "display": {
         "icon": "📔",
-        "color": "#8B4513"
+        "color": "#8B4513",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466581",
+        "created_at": "2025-07-17T11:16:18.302474",
         "source": "csv_import"
       },
       "description": "Daily conversations with your inner self"
@@ -553,6 +597,7 @@
     {
       "id": "rainy_days_to_enjoy",
       "name": "Rainy Days to Enjoy",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 20,
@@ -565,12 +610,13 @@
       },
       "display": {
         "icon": "🌧️",
-        "color": "#708090"
+        "color": "#708090",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466640",
+        "created_at": "2025-07-17T11:16:18.302527",
         "source": "csv_import"
       },
       "description": "Annual moments of cozy contemplation"
@@ -578,6 +624,7 @@
     {
       "id": "your_birthdays",
       "name": "Your Birthdays",
+      "type": "experiential",
       "category": "celebration",
       "frequency": {
         "times": 1,
@@ -590,12 +637,13 @@
       },
       "display": {
         "icon": "🎂",
-        "color": "#FFD700"
+        "color": "#FFD700",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466699",
+        "created_at": "2025-07-17T11:16:18.302576",
         "source": "csv_import"
       },
       "description": "Another trip around the sun"
@@ -603,6 +651,7 @@
     {
       "id": "learning_courses_or_books",
       "name": "Learning Courses or Books",
+      "type": "experiential",
       "category": "personal_growth",
       "frequency": {
         "times": 3,
@@ -615,12 +664,13 @@
       },
       "display": {
         "icon": "🎓",
-        "color": "#4169E1"
+        "color": "#4169E1",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466759",
+        "created_at": "2025-07-17T11:16:18.302624",
         "source": "csv_import"
       },
       "description": "Annual investments in expanding your mind"
@@ -628,6 +678,7 @@
     {
       "id": "new_projects_started",
       "name": "New Projects Started",
+      "type": "experiential",
       "category": "personal_growth",
       "frequency": {
         "times": 10,
@@ -640,12 +691,13 @@
       },
       "display": {
         "icon": "🚀",
-        "color": "#FF4500"
+        "color": "#FF4500",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466818",
+        "created_at": "2025-07-17T11:16:18.302703",
         "source": "csv_import"
       },
       "description": "Annual creative endeavors and challenges"
@@ -653,6 +705,7 @@
     {
       "id": "monday_mornings",
       "name": "Monday Mornings",
+      "type": "experiential",
       "category": "universal",
       "frequency": {
         "times": 52,
@@ -665,12 +718,13 @@
       },
       "display": {
         "icon": "🌅",
-        "color": "#87CEEB"
+        "color": "#87CEEB",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466893",
+        "created_at": "2025-07-17T11:16:18.302760",
         "source": "csv_import"
       },
       "description": "Weekly fresh starts and new beginnings"
@@ -678,6 +732,7 @@
     {
       "id": "full_moons_to_notice",
       "name": "Full Moons to Notice",
+      "type": "experiential",
       "category": "universal",
       "frequency": {
         "times": 12,
@@ -690,12 +745,13 @@
       },
       "display": {
         "icon": "🌕",
-        "color": "#C0C0C0"
+        "color": "#C0C0C0",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.466953",
+        "created_at": "2025-07-17T11:16:18.302834",
         "source": "csv_import"
       },
       "description": "Monthly reminders to look up and wonder"
@@ -703,6 +759,7 @@
     {
       "id": "winters_remaining",
       "name": "Winters Remaining",
+      "type": "experiential",
       "category": "universal",
       "frequency": {
         "times": 1,
@@ -715,12 +772,13 @@
       },
       "display": {
         "icon": "❄️",
-        "color": "#B0E0E6"
+        "color": "#B0E0E6",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467039",
+        "created_at": "2025-07-17T11:16:18.302899",
         "source": "csv_import"
       },
       "description": "Annual cycles of reflection and renewal"
@@ -728,6 +786,7 @@
     {
       "id": "sundays",
       "name": "Sundays",
+      "type": "experiential",
       "category": "universal",
       "frequency": {
         "times": 52,
@@ -740,12 +799,13 @@
       },
       "display": {
         "icon": "🕊️",
-        "color": "#DDA0DD"
+        "color": "#DDA0DD",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467097",
+        "created_at": "2025-07-17T11:16:18.303002",
         "source": "csv_import"
       },
       "description": "Weekly rhythms of rest and reflection"
@@ -753,6 +813,7 @@
     {
       "id": "family_dinners",
       "name": "Family Dinners",
+      "type": "experiential",
       "category": "social",
       "frequency": {
         "times": 104,
@@ -765,12 +826,13 @@
       },
       "display": {
         "icon": "🍽️",
-        "color": "#E74C3C"
+        "color": "#E74C3C",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": false,
-        "created_at": "2025-07-15T16:17:18.467155",
+        "created_at": "2025-07-17T11:16:18.303076",
         "source": "csv_import"
       },
       "description": "Gathering around the table with loved ones"
@@ -778,6 +840,7 @@
     {
       "id": "travel_books_to_read",
       "name": "Travel Books to Read",
+      "type": "experiential",
       "category": "learning",
       "frequency": {
         "times": 6,
@@ -790,12 +853,13 @@
       },
       "display": {
         "icon": "📚",
-        "color": "#9B59B6"
+        "color": "#9B59B6",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467213",
+        "created_at": "2025-07-17T11:16:18.303144",
         "source": "csv_import"
       },
       "description": "Getting lost in different worlds and ideas"
@@ -803,6 +867,7 @@
     {
       "id": "camping_trips",
       "name": "Camping Trips",
+      "type": "experiential",
       "category": "travel",
       "frequency": {
         "times": 4,
@@ -815,12 +880,13 @@
       },
       "display": {
         "icon": "⛺",
-        "color": "#1ABC9C"
+        "color": "#1ABC9C",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": false,
-        "created_at": "2025-07-15T16:17:18.467285",
+        "created_at": "2025-07-17T11:16:18.303215",
         "source": "csv_import"
       },
       "description": "Sleeping under the stars and reconnecting with nature"
@@ -828,6 +894,7 @@
     {
       "id": "rupals_birthdays",
       "name": "Rupal's Birthdays",
+      "type": "experiential",
       "category": "celebration",
       "frequency": {
         "times": 1,
@@ -840,12 +907,13 @@
       },
       "display": {
         "icon": "🎂",
-        "color": "#FFD700"
+        "color": "#FFD700",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467342",
+        "created_at": "2025-07-17T11:16:18.303266",
         "source": "csv_import"
       },
       "description": "Another trip around the sun"
@@ -853,6 +921,7 @@
     {
       "id": "morning_runs",
       "name": "Morning Runs",
+      "type": "experiential",
       "category": "exercise",
       "frequency": {
         "times": 150,
@@ -865,12 +934,13 @@
       },
       "display": {
         "icon": "🏃",
-        "color": "#2ECC71"
+        "color": "#2ECC71",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": false,
-        "created_at": "2025-07-15T16:17:18.467398",
+        "created_at": "2025-07-17T11:16:18.303344",
         "source": "csv_import"
       },
       "description": "Starting the day with endorphins"
@@ -878,6 +948,7 @@
     {
       "id": "garden_planted",
       "name": "Garden Planted",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 1,
@@ -890,12 +961,13 @@
       },
       "display": {
         "icon": "🌱",
-        "color": "#FF6347"
+        "color": "#FF6347",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": false,
-        "created_at": "2025-07-15T16:17:18.467454",
+        "created_at": "2025-07-17T11:16:18.303415",
         "source": "csv_import"
       },
       "description": "Growing your own food and flowers"
@@ -903,6 +975,7 @@
     {
       "id": "movie_nights_w_rupal",
       "name": "Movie Nights w/ Rupal",
+      "type": "experiential",
       "category": "routine",
       "frequency": {
         "times": 52,
@@ -915,12 +988,13 @@
       },
       "display": {
         "icon": "🎬",
-        "color": "#4A90E2"
+        "color": "#4A90E2",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467513",
+        "created_at": "2025-07-17T11:16:18.303480",
         "source": "csv_import"
       },
       "description": "Popcorn and stories on the couch"
@@ -928,6 +1002,7 @@
     {
       "id": "beach_days",
       "name": "Beach Days",
+      "type": "experiential",
       "category": "nature",
       "frequency": {
         "times": 20,
@@ -940,12 +1015,13 @@
       },
       "display": {
         "icon": "🏖️",
-        "color": "#FF6347"
+        "color": "#FF6347",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467586",
+        "created_at": "2025-07-17T11:16:18.303547",
         "source": "csv_import"
       },
       "description": "Sand between your toes and salt in the air"
@@ -953,6 +1029,7 @@
     {
       "id": "game_nights",
       "name": "Game Nights",
+      "type": "experiential",
       "category": "social",
       "frequency": {
         "times": 12,
@@ -965,12 +1042,13 @@
       },
       "display": {
         "icon": "🎲",
-        "color": "#E74C3C"
+        "color": "#E74C3C",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467640",
+        "created_at": "2025-07-17T11:16:18.303614",
         "source": "csv_import"
       },
       "description": "Friendly competition and laughter"
@@ -978,6 +1056,7 @@
     {
       "id": "concerts_to_attend",
       "name": "Concerts To Attend",
+      "type": "experiential",
       "category": "hobby",
       "frequency": {
         "times": 3,
@@ -990,23 +1069,984 @@
       },
       "display": {
         "icon": "🎵",
-        "color": "#16A085"
+        "color": "#16A085",
+        "format": "occurrences"
       },
       "metadata": {
         "user_created": true,
         "is_active": true,
-        "created_at": "2025-07-15T16:17:18.467696",
+        "created_at": "2025-07-17T11:16:18.303666",
         "source": "csv_import"
       },
       "description": "Live music and shared energy"
+    },
+    {
+      "id": "netflix_subscription",
+      "name": "Netflix Subscription",
+      "type": "financial",
+      "category": "subscriptions",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📺",
+        "color": "#E50914",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.303709",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 15.99,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Premium streaming entertainment"
+    },
+    {
+      "id": "spotify_premium",
+      "name": "Spotify Premium",
+      "type": "financial",
+      "category": "subscriptions",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎵",
+        "color": "#1DB954",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.303762",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 10.99,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Unlimited music streaming"
+    },
+    {
+      "id": "new_york_times_digital",
+      "name": "New York Times Digital",
+      "type": "financial",
+      "category": "subscriptions",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📰",
+        "color": "#000000",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.303888",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 17.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Digital news and journalism"
+    },
+    {
+      "id": "gym_membership",
+      "name": "Gym Membership",
+      "type": "financial",
+      "category": "health",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "💪",
+        "color": "#FF6B6B",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.303967",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 45.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Monthly fitness investment"
+    },
+    {
+      "id": "grocery_shopping",
+      "name": "Grocery Shopping",
+      "type": "financial",
+      "category": "food",
+      "frequency": {
+        "times": 52,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🛒",
+        "color": "#4ECDC4",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.304055",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 150.0,
+        "unit": "week",
+        "currency": "USD"
+      },
+      "description": "Weekly household groceries"
+    },
+    {
+      "id": "restaurant_dinners",
+      "name": "Restaurant Dinners",
+      "type": "financial",
+      "category": "food",
+      "frequency": {
+        "times": 24,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🍽️",
+        "color": "#FF6B6B",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.304129",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 75.0,
+        "unit": "meal",
+        "currency": "USD"
+      },
+      "description": "Dining out experiences"
+    },
+    {
+      "id": "coffee_shop_visits",
+      "name": "Coffee Shop Visits",
+      "type": "financial",
+      "category": "food",
+      "frequency": {
+        "times": 100,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 15,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "☕",
+        "color": "#6F4E37",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.304432",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 6.0,
+        "unit": "visit",
+        "currency": "USD"
+      },
+      "description": "Daily caffeine fix"
+    },
+    {
+      "id": "gas_fill_ups",
+      "name": "Gas Fill-ups",
+      "type": "financial",
+      "category": "transportation",
+      "frequency": {
+        "times": 26,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "⛽",
+        "color": "#FFA500",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.304866",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 50.0,
+        "unit": "tank",
+        "currency": "USD"
+      },
+      "description": "Vehicle fuel costs"
+    },
+    {
+      "id": "car_insurance",
+      "name": "Car Insurance",
+      "type": "financial",
+      "category": "insurance",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🚗",
+        "color": "#4169E1",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.305002",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 125.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Vehicle coverage"
+    },
+    {
+      "id": "health_insurance",
+      "name": "Health Insurance",
+      "type": "financial",
+      "category": "insurance",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏥",
+        "color": "#228B22",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.305236",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 350.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Medical coverage"
+    },
+    {
+      "id": "rent_payment",
+      "name": "Rent Payment",
+      "type": "financial",
+      "category": "housing",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏠",
+        "color": "#8B4513",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.305315",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 1500.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Monthly housing cost"
+    },
+    {
+      "id": "electricity_bill",
+      "name": "Electricity Bill",
+      "type": "financial",
+      "category": "utilities",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "💡",
+        "color": "#FFD700",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.305363",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 120.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Monthly power usage"
+    },
+    {
+      "id": "internet_service",
+      "name": "Internet Service",
+      "type": "financial",
+      "category": "utilities",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📶",
+        "color": "#4169E1",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.305543",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 75.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "High-speed connectivity"
+    },
+    {
+      "id": "phone_bill",
+      "name": "Phone Bill",
+      "type": "financial",
+      "category": "utilities",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 14,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📱",
+        "color": "#32CD32",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.306253",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 85.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Mobile service plan"
+    },
+    {
+      "id": "hotel_stays",
+      "name": "Hotel Stays",
+      "type": "financial",
+      "category": "travel",
+      "frequency": {
+        "times": 20,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏨",
+        "color": "#FF1493",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.306673",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 100.0,
+        "unit": "night",
+        "currency": "USD"
+      },
+      "description": "Travel accommodation"
+    },
+    {
+      "id": "flight_tickets",
+      "name": "Flight Tickets",
+      "type": "financial",
+      "category": "travel",
+      "frequency": {
+        "times": 6,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "✈️",
+        "color": "#00CED1",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.307115",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 300.0,
+        "unit": "roundtrip",
+        "currency": "USD"
+      },
+      "description": "Air travel expenses"
+    },
+    {
+      "id": "uberlyft_rides",
+      "name": "Uber/Lyft Rides",
+      "type": "financial",
+      "category": "transportation",
+      "frequency": {
+        "times": 36,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🚕",
+        "color": "#000000",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.307335",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 25.0,
+        "unit": "ride",
+        "currency": "USD"
+      },
+      "description": "Rideshare services"
+    },
+    {
+      "id": "amazon_prime",
+      "name": "Amazon Prime",
+      "type": "financial",
+      "category": "subscriptions",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📦",
+        "color": "#FF9900",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.307707",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 139.0,
+        "unit": "year",
+        "currency": "USD"
+      },
+      "description": "Annual membership fee"
+    },
+    {
+      "id": "haircut_appointments",
+      "name": "Haircut Appointments",
+      "type": "financial",
+      "category": "personal_care",
+      "frequency": {
+        "times": 8,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 5,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "✂️",
+        "color": "#9370DB",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.307882",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 35.0,
+        "unit": "cut",
+        "currency": "USD"
+      },
+      "description": "Grooming and styling"
+    },
+    {
+      "id": "clothing_purchases",
+      "name": "Clothing Purchases",
+      "type": "financial",
+      "category": "shopping",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 13,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "👔",
+        "color": "#FF69B4",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.308400",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 100.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Wardrobe updates"
+    },
+    {
+      "id": "home_maintenance",
+      "name": "Home Maintenance",
+      "type": "financial",
+      "category": "housing",
+      "frequency": {
+        "times": 4,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🔧",
+        "color": "#696969",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.308589",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 250.0,
+        "unit": "quarter",
+        "currency": "USD"
+      },
+      "description": "Repairs and upkeep"
+    },
+    {
+      "id": "car_maintenance",
+      "name": "Car Maintenance",
+      "type": "financial",
+      "category": "transportation",
+      "frequency": {
+        "times": 4,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🔧",
+        "color": "#DC143C",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.308761",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 200.0,
+        "unit": "service",
+        "currency": "USD"
+      },
+      "description": "Oil changes and service"
+    },
+    {
+      "id": "dental_cleanings",
+      "name": "Dental Cleanings",
+      "type": "financial",
+      "category": "health",
+      "frequency": {
+        "times": 2,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 5,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🦷",
+        "color": "#00BFFF",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.308926",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 150.0,
+        "unit": "visit",
+        "currency": "USD"
+      },
+      "description": "Preventive dental care"
+    },
+    {
+      "id": "doctor_copays",
+      "name": "Doctor Copays",
+      "type": "financial",
+      "category": "health",
+      "frequency": {
+        "times": 6,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 0,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "👨‍⚕️",
+        "color": "#228B22",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309082",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 30.0,
+        "unit": "visit",
+        "currency": "USD"
+      },
+      "description": "Medical visit fees"
+    },
+    {
+      "id": "property_tax",
+      "name": "Property Tax",
+      "type": "financial",
+      "category": "housing",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏛️",
+        "color": "#4682B4",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309284",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 3000.0,
+        "unit": "year",
+        "currency": "USD"
+      },
+      "description": "Annual property tax"
+    },
+    {
+      "id": "holiday_gifts",
+      "name": "Holiday Gifts",
+      "type": "financial",
+      "category": "shopping",
+      "frequency": {
+        "times": 1,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎁",
+        "color": "#FF0000",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309403",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 500.0,
+        "unit": "year",
+        "currency": "USD"
+      },
+      "description": "Annual gift budget"
+    },
+    {
+      "id": "entertainment_events",
+      "name": "Entertainment Events",
+      "type": "financial",
+      "category": "entertainment",
+      "frequency": {
+        "times": 6,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🎭",
+        "color": "#9370DB",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309485",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 75.0,
+        "unit": "event",
+        "currency": "USD"
+      },
+      "description": "Concerts movies sports"
+    },
+    {
+      "id": "parking_fees",
+      "name": "Parking Fees",
+      "type": "financial",
+      "category": "transportation",
+      "frequency": {
+        "times": 50,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 16,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🅿️",
+        "color": "#1E90FF",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309536",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 10.0,
+        "unit": "hour",
+        "currency": "USD"
+      },
+      "description": "City parking costs"
+    },
+    {
+      "id": "bank_fees",
+      "name": "Bank Fees",
+      "type": "financial",
+      "category": "financial",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 18,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "🏦",
+        "color": "#008080",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309580",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 12.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Account maintenance"
+    },
+    {
+      "id": "investment_contributions",
+      "name": "Investment Contributions",
+      "type": "financial",
+      "category": "financial",
+      "frequency": {
+        "times": 12,
+        "period": "year"
+      },
+      "age_range": {
+        "start": 22,
+        "end": null,
+        "flexible_end": true
+      },
+      "display": {
+        "icon": "📈",
+        "color": "#32CD32",
+        "format": "currency"
+      },
+      "metadata": {
+        "user_created": true,
+        "is_active": true,
+        "created_at": "2025-07-17T11:16:18.309626",
+        "source": "csv_import"
+      },
+      "financial": {
+        "amount": 500.0,
+        "unit": "month",
+        "currency": "USD"
+      },
+      "description": "Retirement savings"
     }
   ],
   "metadata": {
     "version": "2.0",
-    "created_at": "2025-07-15T16:17:18.467775",
-    "last_updated": "2025-07-15T16:17:18.467777",
-    "total_activities": 40,
+    "created_at": "2025-07-17T11:16:18.309872",
+    "last_updated": "2025-07-17T11:16:18.309873",
+    "total_activities": 70,
     "source": "csv_import",
-    "generated_by": "convert_activities_in_sheets_to_JSON.py"
+    "generated_by": "convert_to_json2.py"
   }
 }

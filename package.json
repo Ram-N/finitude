@@ -20,9 +20,10 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "generate-activities": "uv run python scripts/convert_activities_in_sheets_to_JSON.py",
-    "generate-activities:replace": "uv run python scripts/convert_activities_in_sheets_to_JSON.py --replace-default",
-    "generate-activities:dry-run": "uv run python scripts/convert_activities_in_sheets_to_JSON.py --dry-run"
+    "generate-activities": "uv run python scripts/convert_activities_sheets_to_json.py",
+    "generate-activities:replace": "uv run python scripts/convert_activities_sheets_to_json.py --replace-default",
+    "generate-activities:dry-run": "uv run python scripts/convert_activities_sheets_to_json.py --dry-run",
+    "generate-activities:config": "uv run python scripts/convert_activities_sheets_to_json.py --show-config"
   },
   "eslintConfig": {
     "extends": [

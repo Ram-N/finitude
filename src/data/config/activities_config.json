@@ -1,0 +1,25 @@
+{
+  "activities": {
+    "sheet_url": "",
+    "tabs": {
+      "experiences": "0",
+      "financial": "",
+      "quotes": ""
+    },
+    "default_output": {
+      "filename": "imported-activities.json",
+      "directory": "src/data/activities/"
+    },
+    "preferences": {
+      "create_backups": true,
+      "default_replace": false,
+      "skip_financial": false,
+      "skip_quotes": false
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "",
+    "created_at": ""
+  }
+}

@@ -5,7 +5,7 @@ This directory contains utility scripts for managing activities in the Tick-Tock
 ## Activities Generation Workflow
 
 ### Overview
-The `convert_activities_in_sheets_to_JSON.py` script converts a Google Sheets spreadsheet into the complex JSON structure required by the app. This allows for easy, human-friendly editing of activities without dealing with JSON syntax.
+The `convert_to_json2.py` script converts a Google Sheets spreadsheet into the complex JSON structure required by the app. This allows for easy, human-friendly editing of activities without dealing with JSON syntax. It supports multiple tabs for different activity types, including experiential activities and financial activities.
 
 ### Prerequisites
 1. **Dependencies**: The script uses `uv` to manage Python dependencies automatically
@@ -16,9 +16,16 @@ The `convert_activities_in_sheets_to_JSON.py` script converts a Google Sheets sp
 
 ### Google Sheets Structure
 
-Your Google Sheets header row should be:
+Your Google Sheets has multiple tabs with different column structures:
+
+**Experiences Tab:**
 ```
 name | category | frequency | description | icon | age_start | age_end | color | is_active | user_created
+```
+
+**Financial Tab:**
+```
+name | category | frequency | description | icon | amount | unit | currency | age_start | age_end | color | is_active
 ```
 
 **Required columns** (must have these three):
@@ -87,7 +94,7 @@ The script accepts flexible frequency formats:
 npm run generate-activities
 
 # OR using uv directly
-uv run python scripts/convert_activities_in_sheets_to_JSON.py
+uv run python scripts/convert_to_json2.py
 ```
 - **Output**: `src/data/activities/imported-activities.json`
 - **Safe**: Won't overwrite your default activities
@@ -100,7 +107,7 @@ uv run python scripts/convert_activities_in_sheets_to_JSON.py
 npm run generate-activities -- --replace-default
 
 # OR using uv directly
-uv run python scripts/convert_activities_in_sheets_to_JSON.py --replace-default
+uv run python scripts/convert_to_json2.py --replace-default
 ```
 - **Output**: `src/data/activities/default-activities.json`
 - **Backup**: Automatically creates backup file (e.g., `default-activities.backup.1731234567.json`)
@@ -113,7 +120,7 @@ uv run python scripts/convert_activities_in_sheets_to_JSON.py --replace-default
 npm run generate-activities -- --dry-run
 
 # OR using uv directly
-uv run python scripts/convert_activities_in_sheets_to_JSON.py --dry-run
+uv run python scripts/convert_to_json2.py --dry-run
 ```
 - **Output**: Console only (no file created)
 - **Use when**: Testing your Google Sheets changes before committing
@@ -125,7 +132,7 @@ uv run python scripts/convert_activities_in_sheets_to_JSON.py --dry-run
 npm run generate-activities -- --filename my-activities.json
 
 # OR using uv directly
-uv run python scripts/convert_activities_in_sheets_to_JSON.py --filename my-activities.json
+uv run python scripts/convert_to_json2.py --filename my-activities.json
 ```
 - **Output**: `src/data/activities/my-activities.json`
 - **Use when**: You want a specific filename
@@ -134,7 +141,7 @@ uv run python scripts/convert_activities_in_sheets_to_JSON.py --filename my-acti
 
 ```bash
 # Custom output directory
-uv run python scripts/convert_activities_in_sheets_to_JSON.py --output-dir /path/to/custom/dir
+uv run python scripts/convert_to_json2.py --output-dir /path/to/custom/dir
 ```
 - **Output**: Custom directory location
 - **Use when**: You need output in a different location
@@ -151,7 +158,7 @@ npm run generate-activities -- --replace-default --no-backup
 
 ```bash
 # Use local CSV file instead of Google Sheets
-uv run python scripts/convert_activities_in_sheets_to_JSON.py path/to/activities.csv
+uv run python scripts/convert_to_json2.py path/to/activities.csv
 ```
 - **Use when**: Working with local CSV files instead of Google Sheets
 
@@ -159,7 +166,7 @@ uv run python scripts/convert_activities_in_sheets_to_JSON.py path/to/activities
 
 ```bash
 # See all available options
-uv run python scripts/convert_activities_in_sheets_to_JSON.py --help
+uv run python scripts/convert_to_json2.py --help
 ```
 
 ## Step-by-Step Workflow
@@ -243,7 +250,7 @@ The script generates proper JSON structure matching the app's requirements:
     "last_updated": "2025-07-15T16:04:02.880736",
     "total_activities": 40,
     "source": "csv_import",
-    "generated_by": "convert_activities_in_sheets_to_JSON.py"
+    "generated_by": "convert_to_json2.py"
   }
 }
 ```
@@ -295,7 +302,7 @@ name,category,frequency,description,icon,age_start,age_end,color,is_active,user_
 
 ## File Locations
 
-- **Script**: `scripts/convert_activities_in_sheets_to_JSON.py`
+- **Script**: `scripts/convert_to_json2.py`
 - **Default output**: `src/data/activities/imported-activities.json`
 - **Default activities**: `src/data/activities/default-activities.json`
 - **Backups**: `src/data/activities/default-activities.backup.TIMESTAMP.json`
@@ -308,3 +315,7 @@ name,category,frequency,description,icon,age_start,age_end,color,is_active,user_
 - The script validates data and provides helpful error messages
 - Backup files are created with timestamps for easy identification
 - Age ranges with `age_end` automatically set `flexible_end=false`
+- Financial activities require `amount` values and support `currency` and `unit` settings
+- The script combines data from both Experiences and Financial tabs
+- Activities from the Financial tab automatically get type='financial'
+- The script provides detailed statistics and summaries by activity type
