@@ -253,13 +253,22 @@ export const generateFinancialBreakdown = (activity, yearsRemaining) => {
   // Calculate total amount
   const totalAmount = amount * totalOccurrences;
   
+  // Get format settings from user settings
+  let hideCents = false;
+  try {
+    const userSettings = JSON.parse(localStorage.getItem('finitude_settings')) || {};
+    hideCents = userSettings.display?.hide_cents ?? true; // Default to true if not specified
+  } catch (e) {
+    hideCents = true; // Default to true if error
+  }
+  
   // Format amount with currency
   const formatCurrency = (value, curr = 'USD') => {
     return new Intl.NumberFormat('en-US', { 
       style: 'currency', 
       currency: curr,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      minimumFractionDigits: hideCents ? 0 : 2,
+      maximumFractionDigits: hideCents ? 0 : 2
     }).format(value);
   };
   

@@ -44,6 +44,8 @@ const Finitude = () => {
   const firstName = userProfile?.name || '';
   const tickInterval = userSettings?.display?.tick_interval_seconds || 5;
   const quoteProbability = userSettings?.display?.quote_probability || 0.2;
+  const showFinancialCards = userSettings?.display?.show_financial_cards !== false; // Default to true if not specified
+  const hideCents = userSettings?.display?.hide_cents !== false; // Default to true if not specified
 
   const yearsRemaining = lifeExpectancy - currentAge;
 
@@ -73,7 +75,12 @@ const Finitude = () => {
     setActivities(shuffledActivities);
   }, []);
 
-  const cardsWithCounts = activities.map(activity => {
+  // Filter out financial activities if showFinancialCards is false
+  const filteredActivities = showFinancialCards 
+    ? activities 
+    : activities.filter(activity => activity.type !== 'financial');
+
+  const cardsWithCounts = filteredActivities.map(activity => {
     // Standard activity with count
     const baseActivity = {
       ...activity,
@@ -352,53 +359,113 @@ const Finitude = () => {
   };
 
   // Settings Screen Component
-  const SettingsScreen = () => (
-    <div className="w-full max-w-md">
-      <div className="bg-white rounded-2xl shadow-lg">
-        <div className="flex items-center p-6 border-b border-stone-200">
-          <button
-            onClick={handleBackToMain}
-            className="p-2 rounded-full hover:bg-stone-100 transition-colors mr-4"
-          >
-            <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <h2 className="text-xl font-light text-slate-700">Settings</h2>
-        </div>
-        
-        <div className="p-6 space-y-4">
-          <button
-            onClick={() => setCurrentView('lifespan')}
-            className="w-full flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:bg-stone-50 transition-colors"
-          >
-            <span className="text-slate-700">Personal Settings</span>
-            <div className="flex items-center text-slate-500">
-              <span className="mr-2">
-                {firstName ? `${firstName}, ` : ''}{currentAge} → {lifeExpectancy}
-              </span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+  const SettingsScreen = () => {
+    // Toggle settings handlers
+    const handleShowFinancialToggle = () => {
+      const updatedSettings = {
+        ...userSettings,
+        display: {
+          ...userSettings.display,
+          show_financial_cards: !showFinancialCards
+        }
+      };
+      setUserSettings(updatedSettings);
+      localStorage.setItem('finitude_settings', JSON.stringify(updatedSettings));
+    };
+    
+    const handleHideCentsToggle = () => {
+      const updatedSettings = {
+        ...userSettings,
+        display: {
+          ...userSettings.display,
+          hide_cents: !hideCents
+        }
+      };
+      setUserSettings(updatedSettings);
+      localStorage.setItem('finitude_settings', JSON.stringify(updatedSettings));
+    };
+    
+    return (
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow-lg">
+          <div className="flex items-center p-6 border-b border-stone-200">
+            <button
+              onClick={handleBackToMain}
+              className="p-2 rounded-full hover:bg-stone-100 transition-colors mr-4"
+            >
+              <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-            </div>
-          </button>
+            </button>
+            <h2 className="text-xl font-light text-slate-700">Settings</h2>
+          </div>
           
-          <button
-            onClick={() => setCurrentView('activities')}
-            className="w-full flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:bg-stone-50 transition-colors"
-          >
-            <span className="text-slate-700">Manage Activities</span>
-            <div className="flex items-center text-slate-500">
-              <span className="mr-2">{activities.length} activities</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+          <div className="p-6 space-y-4">
+            <button
+              onClick={() => setCurrentView('lifespan')}
+              className="w-full flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:bg-stone-50 transition-colors"
+            >
+              <span className="text-slate-700">Personal Settings</span>
+              <div className="flex items-center text-slate-500">
+                <span className="mr-2">
+                  {firstName ? `${firstName}, ` : ''}{currentAge} → {lifeExpectancy}
+                </span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </button>
+            
+            <button
+              onClick={() => setCurrentView('activities')}
+              className="w-full flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:bg-stone-50 transition-colors"
+            >
+              <span className="text-slate-700">Manage Activities</span>
+              <div className="flex items-center text-slate-500">
+                <span className="mr-2">{activities.length} activities</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </button>
+            
+            {/* Display Settings Section */}
+            <div className="mt-6">
+              <h3 className="text-md font-medium text-slate-700 mb-3">Display Settings</h3>
+              
+              {/* Financial Cards Toggle */}
+              <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200">
+                <div>
+                  <span className="text-slate-700">Show Financial Cards</span>
+                  <p className="text-xs text-slate-500 mt-1">Display green cards for financial activities</p>
+                </div>
+                <button
+                  onClick={handleShowFinancialToggle}
+                  className={`w-12 h-6 rounded-full flex items-center transition-colors duration-300 focus:outline-none ${showFinancialCards ? 'bg-green-500 justify-end' : 'bg-gray-300 justify-start'}`}
+                >
+                  <span className="w-5 h-5 rounded-full bg-white shadow-md transform mx-0.5"></span>
+                </button>
+              </div>
+              
+              {/* Hide Cents Toggle */}
+              <div className="flex items-center justify-between p-4 rounded-xl border border-stone-200 mt-2">
+                <div>
+                  <span className="text-slate-700">Hide Cents</span>
+                  <p className="text-xs text-slate-500 mt-1">Show whole dollar amounts without cents</p>
+                </div>
+                <button
+                  onClick={handleHideCentsToggle}
+                  className={`w-12 h-6 rounded-full flex items-center transition-colors duration-300 focus:outline-none ${hideCents ? 'bg-green-500 justify-end' : 'bg-gray-300 justify-start'}`}
+                >
+                  <span className="w-5 h-5 rounded-full bg-white shadow-md transform mx-0.5"></span>
+                </button>
+              </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Lifespan Settings Component
   const LifespanScreen = () => (

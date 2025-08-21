@@ -148,14 +148,34 @@ export const calculateFinancialTotal = (activity, profile) => {
  * @param {string} currency - Currency code (e.g., USD)
  * @returns {string} Formatted currency string
  */
-export const formatCurrency = (amount, currency = 'USD') => {
+export const formatCurrency = (amount, currency = 'USD', hideCents = false) => {
+  // Get user settings for hiding cents
+  let settings;
+  try {
+    const userSettings = JSON.parse(localStorage.getItem('finitude_settings')) || {};
+    settings = userSettings.display || {};
+  } catch (e) {
+    settings = {};
+  }
+  
+  // Use provided hideCents parameter or fall back to user settings
+  const shouldHideCents = hideCents !== undefined ? hideCents : settings.hide_cents;
+  
+  // Format options based on whether to hide cents
+  const options = { 
+    style: 'currency', 
+    currency: currency,
+    minimumFractionDigits: shouldHideCents ? 0 : 2,
+    maximumFractionDigits: shouldHideCents ? 0 : 2
+  };
+  
   const currencyFormatters = {
-    USD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }),
-    EUR: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }),
-    GBP: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP' }),
-    CAD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CAD' }),
-    AUD: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'AUD' }),
-    JPY: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'JPY' }),
+    USD: new Intl.NumberFormat('en-US', options),
+    EUR: new Intl.NumberFormat('en-US', options),
+    GBP: new Intl.NumberFormat('en-US', options),
+    CAD: new Intl.NumberFormat('en-US', options),
+    AUD: new Intl.NumberFormat('en-US', options),
+    JPY: new Intl.NumberFormat('en-US', options),
   };
   
   const formatter = currencyFormatters[currency] || currencyFormatters.USD;

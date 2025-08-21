@@ -5,7 +5,9 @@
     "animation_speed": "normal",
     "show_progress_bar": true,
     "card_transition": "slide",
-    "quote_probability": 0.2
+    "quote_probability": 0.2,
+    "show_financial_cards": true,
+    "hide_cents": true
   },
   "audio": {
     "sound_enabled": false,
