@@ -58,14 +58,33 @@ npm run deploy
 ## 📁 Important Files
 
 - **Activities**: `/src/data/activities/default-activities.json`
+- **Activities Config**: `/src/data/config/activities_config.json`
 - **User Profile**: `/src/data/users/default-profile.json`
 - **Settings**: `/src/data/users/default-settings.json`
 - **Main Component**: `/src/Finitude.js`
-- **Activity Guide**: `ACTIVITY_MANAGEMENT.md`
+- **Activity Guides**: 
+  - `docs/ACTIVITIES_WORKFLOW.md` - Complete workflow guide
+  - `docs/CONFIGURATION_GUIDE.md` - Configuration options
+  - `docs/ACTIVITIES_BACKUP_GUIDE.md` - Backup procedures
 
 ## 🛠️ Common Tasks
 
-### Add New Activity
+### Manage Activities
+
+#### Using Google Sheets (Recommended)
+```bash
+# Configure Google Sheets URL once
+npm run generate-activities -- --sheet-url YOUR_SHEET_URL --save-config
+
+# Generate activities from Google Sheets
+npm run generate-activities
+
+# Replace default activities
+npm run generate-activities -- --replace-default
+```
+See `docs/ACTIVITIES_WORKFLOW.md` for detailed instructions.
+
+#### Manual JSON Editing
 1. Edit `/src/data/activities/default-activities.json`
 2. Add new activity object with proper schema
 3. Run `npm start` to test locally
@@ -80,6 +99,8 @@ npm run deploy
 - All personal data stored in browser localStorage
 - Export via app settings (when implemented)
 - JSON files serve as defaults for new users
+- Activities are automatically backed up when using `--replace-default` option
+- See `docs/ACTIVITIES_BACKUP_GUIDE.md` for detailed backup procedures
 
 ## 🎯 Live URLs
 
